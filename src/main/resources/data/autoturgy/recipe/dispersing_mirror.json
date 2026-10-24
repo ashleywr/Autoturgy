@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BVB",
+    "GMG",
+    "BEB"
+  ],
+  "key": {
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "E": {
+      "item": "minecraft:ender_pearl"
+    },
+    "M": {
+      "item": "thaumaturge:mirror"
+    },
+    "V": {
+      "item": "autoturgy:crystalline_eye"
+    },
+    "B": {
+      "item": "minecraft:book"
+    }
+  },
+  "result": {
+    "id": "autoturgy:dispersing_mirror",
+    "count": 1
+  }
+}

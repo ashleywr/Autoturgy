@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " V ",
+    "GMG",
+    " G "
+  ],
+  "key": {
+    "M": {
+      "item": "thaumaturge:mirror"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "V": {
+      "item": "autoturgy:crystalline_eye"
+    }
+  },
+  "result": {
+    "id": "autoturgy:hungry_hand_mirror",
+    "count": 1
+  }
+}

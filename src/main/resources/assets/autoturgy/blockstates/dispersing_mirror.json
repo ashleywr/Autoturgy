@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "autoturgy:block/dispersing_mirror",
+      "y": 0
+    },
+    "facing=east": {
+      "model": "autoturgy:block/dispersing_mirror",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "autoturgy:block/dispersing_mirror",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "autoturgy:block/dispersing_mirror",
+      "y": 270
+    }
+  }
+}

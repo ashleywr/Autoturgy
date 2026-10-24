@@ -19,6 +19,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.item.component.CustomData;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.entity.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
@@ -138,6 +139,14 @@ public final class SensingModule {
     }
 
     @Override
+    public boolean doesSneakBypassUse(
+        ItemStack stack, LevelReader level, BlockPos pos, Player player) {
+      return entity
+          && level.getBlockEntity(pos)
+              instanceof com.sanhiruzu.autoturgy.storage.StorageModule.ChestEntity;
+    }
+
+    @Override
     public InteractionResult useOn(UseOnContext context) {
       if (entity || context.getPlayer() == null || !context.getPlayer().isShiftKeyDown())
         return InteractionResult.PASS;
@@ -224,7 +233,8 @@ public final class SensingModule {
     }
   }
 
-  public static class RemoteEntity extends DeviceEntity implements DeviceBlock.Ticking {
+  public static class RemoteEntity extends DeviceEntity
+      implements DeviceBlock.Ticking, TallyService.CountProvider {
     public RemoteEntity(BlockPos p, BlockState s) {
       super(REMOTE_TYPE.get(), p, s);
     }
@@ -239,12 +249,17 @@ public final class SensingModule {
 
     public void configure(int i, int delta) {}
 
+    public long count(StackFilters.Filter filter, Set<BlockPos> visited, int depth) {
+      return TallyService.count(
+          (ServerLevel) level, worldPosition, target, filter, 0, visited, depth);
+    }
+
     public void serverTick() {
       if (level.getGameTime() % 4 != 0) return;
       int signal = 0;
       if (target != null && LoadedTargets.local(level, worldPosition, target, 20)) {
         BlockState state = level.getBlockState(target.pos());
-        if (!(level.getBlockEntity(target.pos()) instanceof DeviceEntity)
+        if (!(level.getBlockEntity(target.pos()) instanceof RemoteEntity)
             && state.hasAnalogOutputSignal())
           signal = state.getAnalogOutputSignal(level, target.pos());
       }

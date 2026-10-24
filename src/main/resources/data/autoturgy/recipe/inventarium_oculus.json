@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " V ",
+    "VAV",
+    " G "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "V": {
+      "item": "autoturgy:crystalline_eye"
+    }
+  },
+  "result": {
+    "id": "autoturgy:inventarium_oculus",
+    "count": 1
+  }
+}

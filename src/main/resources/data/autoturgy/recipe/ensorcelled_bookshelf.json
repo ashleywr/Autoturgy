@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "EGE",
+    "BSB",
+    "EGE"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:bookshelf"
+    },
+    "B": {
+      "item": "minecraft:book"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    },
+    "E": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "result": {
+    "id": "autoturgy:ensorcelled_bookshelf",
+    "count": 1
+  }
+}

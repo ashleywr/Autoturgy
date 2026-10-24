@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AVA",
+    "GMG",
+    "AGA"
+  ],
+  "key": {
+    "V": {
+      "item": "autoturgy:crystalline_eye"
+    },
+    "M": {
+      "item": "thaumaturge:mirror"
+    },
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "result": {
+    "id": "autoturgy:melding_mirror",
+    "count": 1
+  }
+}

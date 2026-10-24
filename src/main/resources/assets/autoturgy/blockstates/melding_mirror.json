@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "autoturgy:block/melding_mirror",
+      "y": 0
+    },
+    "facing=east": {
+      "model": "autoturgy:block/melding_mirror",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "autoturgy:block/melding_mirror",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "autoturgy:block/melding_mirror",
+      "y": 270
+    }
+  }
+}

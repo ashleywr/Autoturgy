@@ -54,6 +54,18 @@ public final class TallyService {
     }
     BlockEntity be = level.getBlockEntity(pos);
     if (be instanceof CountProvider provider) return provider.count(filter, visited, depth + 1);
+    var block = level.getBlockState(pos).getBlock();
+    if (block == net.minecraft.world.level.block.Blocks.BOOKSHELF
+        || block == com.sanhiruzu.autoturgy.inventarium.InventariumModule.ENCHANTING_SHELF.get()
+        || block == com.sanhiruzu.autoturgy.inventarium.InventariumModule.ENSORCELLED_SHELF.get()) {
+      for (BlockPos corePos : BlockPos.betweenClosed(pos.offset(-3, -3, -3), pos.offset(3, 3, 3))) {
+        if (!level.hasChunkAt(corePos) || !visited.add(corePos.immutable())) continue;
+        if (level.getBlockEntity(corePos)
+                instanceof com.sanhiruzu.autoturgy.inventarium.InventariumModule.CoreEntity core
+            && com.sanhiruzu.autoturgy.inventarium.InventariumModule.structure(level, corePos)
+                .valid()) return core.count(filter, visited, depth + 1);
+      }
+    }
     IItemHandler inventory =
         level.getCapability(Capabilities.ItemHandler.BLOCK, pos, target.side());
     if (inventory == null) return 0;

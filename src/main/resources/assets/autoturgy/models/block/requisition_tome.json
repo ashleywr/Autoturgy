@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "autoturgy:block/requisition_tome",
+    "side": "autoturgy:block/device_side",
+    "top": "autoturgy:block/device_top"
+  }
+}

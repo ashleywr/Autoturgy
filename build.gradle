@@ -23,7 +23,7 @@ neoForge {
             type = 'gameTestServer'
             gameDirectory = file('../validation/gametest')
             systemProperty 'neoforge.enabledGameTestNamespaces', 'autoturgy'
-            systemProperty 'autoturgy.testReport', file('../validation/phase1/gametest.xml').absolutePath
+            systemProperty 'autoturgy.testReport', file('../validation/' + providers.gradleProperty('testPhase').getOrElse('phase2') + '/gametest.xml').absolutePath
         }
     }
     mods {

@@ -24,7 +24,8 @@ public final class RedcrystalNetwork {
     AMPLIFIED,
     DIM,
     DENSE,
-    RESONATING
+    RESONATING,
+    MERCURIAL
   }
 
   public static final Map<Variant, DeferredBlock<CrystalBlock>> BLOCKS =
@@ -198,6 +199,30 @@ public final class RedcrystalNetwork {
   private static List<Edge> edges(CrystalEntity a) {
     Level level = a.getLevel();
     List<Edge> edges = new ArrayList<>();
+    if (a.variant() == Variant.MERCURIAL
+        && a.target != null
+        && LoadedTargets.local(level, a.getBlockPos(), a.target, 1)) {
+      com.sanhiruzu.autoturgy.transport.MirrorRoutes.resolve(level.getServer(), a.target)
+          .ifPresent(
+              route -> {
+                Level destination = route.exit().getLevel();
+                for (Direction direction : Direction.values()) {
+                  CrystalEntity b =
+                      crystal(destination, route.exit().getBlockPos().relative(direction));
+                  if (b == null
+                      || b.variant() != Variant.MERCURIAL
+                      || b.target == null
+                      || !b.target.dimension().equals(destination.dimension())
+                      || !b.target.pos().equals(route.exit().getBlockPos())) continue;
+                  Direction exit =
+                      Direction.getNearest(
+                          a.target.pos().getX() - a.getBlockPos().getX(),
+                          a.target.pos().getY() - a.getBlockPos().getY(),
+                          a.target.pos().getZ() - a.getBlockPos().getZ());
+                  addEdge(edges, a, b, exit, direction.getOpposite(), 0);
+                }
+              });
+    }
     for (Direction d : Direction.values()) {
       Direction attached = a.getBlockState().getValue(CrystalBlock.ATTACHMENT);
       CrystalEntity adjacent = crystal(level, a.getBlockPos().relative(d));

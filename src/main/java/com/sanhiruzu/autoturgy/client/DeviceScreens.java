@@ -88,6 +88,16 @@ public final class DeviceScreens {
 
     private Component value(int i) {
       int value = menu.data.get(i + 2);
+      if (menu.kind.equals("greedy_chest")) {
+        if (i < 6) return onOff((menu.data.get(2) & 1 << i) != 0);
+        return i == 6
+            ? Component.translatable("mode.autoturgy.greedy." + menu.data.get(3))
+            : Component.literal(Integer.toString(menu.data.get(4)));
+      }
+      if (menu.kind.equals("inventarium_scribe"))
+        return Component.literal(net.minecraft.core.Direction.from3DDataValue(value).getName());
+      if (menu.kind.equals("inventarium_oculus"))
+        return Component.translatable("mode.autoturgy.oculus." + value);
       if (i == menu.selectionControl && value >= 0 && value < menu.selections.size()) {
         String key = menu.selections.get(value);
         return key.isEmpty()
@@ -99,6 +109,7 @@ public final class DeviceScreens {
           return Component.translatable(
               "mode.autoturgy.connection." + ((menu.data.get(2) >> (i * 2)) & 3));
         value = menu.data.get(i == 6 ? 4 : i == 7 ? 5 : 3);
+        if (i == 8) return onOff(value != 0);
       }
       if (menu.kind.equals("magic_hourglass") && i == 1)
         return Component.translatable("mode.autoturgy.output." + value);
@@ -110,7 +121,15 @@ public final class DeviceScreens {
         return Component.translatable("mode.autoturgy.lens." + value);
       if (menu.kind.equals("signum_entia") && i == 1)
         return Component.translatable("mode.autoturgy.age." + value);
+      if (menu.kind.equals("magic_hourglass") && i >= 3
+          || menu.kind.equals("vis_reader") && i == 1
+          || menu.kind.equals("tally_box") && i == 3
+          || menu.kind.equals("signum_entia") && i == 3) return onOff(value != 0);
       return Component.literal(Integer.toString(value));
+    }
+
+    private Component onOff(boolean enabled) {
+      return Component.translatable(enabled ? "menu.autoturgy.on" : "menu.autoturgy.off");
     }
 
     @Override
@@ -176,6 +195,12 @@ public final class DeviceScreens {
             topPos + slot.y - 1,
             leftPos + slot.x + 17,
             topPos + slot.y + 17,
+            0xFF9D7A45);
+        g.fill(
+            leftPos + slot.x,
+            topPos + slot.y,
+            leftPos + slot.x + 16,
+            topPos + slot.y + 16,
             slot.index < 9 ? 0xFF416E73 : 0xFF53605E);
       }
     }

@@ -17,6 +17,8 @@ public final class AutoturgyClient {
     event.register(ControlMenu.TYPE.get(), DeviceScreens.ControlScreen::new);
     event.register(FilterMenu.TYPE.get(), DeviceScreens.FilterScreen::new);
     event.register(GuideItem.TYPE.get(), GuideScreen::new);
+    event.register(
+        com.sanhiruzu.autoturgy.inventarium.InventariumMenu.TYPE.get(), InventariumScreen::new);
   }
 
   private AutoturgyClient() {}

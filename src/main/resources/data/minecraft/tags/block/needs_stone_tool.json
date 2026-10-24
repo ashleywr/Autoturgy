@@ -12,6 +12,21 @@
     "autoturgy:remote_comparator",
     "autoturgy:vis_reader",
     "autoturgy:tally_box",
-    "autoturgy:signum_entia"
+    "autoturgy:signum_entia",
+    "autoturgy:hungry_maw",
+    "autoturgy:finical_maw",
+    "autoturgy:greedy_chest",
+    "autoturgy:eager_chest",
+    "autoturgy:tenacious_chest",
+    "autoturgy:inventarium_core",
+    "autoturgy:inventarium_scribe",
+    "autoturgy:inventarium_oculus",
+    "autoturgy:inventarium_memory",
+    "autoturgy:enchanting_bookshelf",
+    "autoturgy:ensorcelled_bookshelf",
+    "autoturgy:melding_mirror",
+    "autoturgy:dispersing_mirror",
+    "autoturgy:mercurial_redcrystal",
+    "autoturgy:requisition_tome"
   ]
 }

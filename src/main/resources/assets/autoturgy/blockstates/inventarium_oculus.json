@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "autoturgy:block/inventarium_oculus",
+      "y": 0
+    },
+    "facing=east": {
+      "model": "autoturgy:block/inventarium_oculus",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "autoturgy:block/inventarium_oculus",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "autoturgy:block/inventarium_oculus",
+      "y": 270
+    }
+  }
+}

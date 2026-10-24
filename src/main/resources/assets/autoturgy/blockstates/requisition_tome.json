@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "autoturgy:block/requisition_tome",
+      "y": 0
+    },
+    "facing=east": {
+      "model": "autoturgy:block/requisition_tome",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "autoturgy:block/requisition_tome",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "autoturgy:block/requisition_tome",
+      "y": 270
+    }
+  }
+}

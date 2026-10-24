@@ -1,7 +1,7 @@
 # Autoturgy
 
 An original magical automation addon for Minecraft **1.21.1**, NeoForge
-**21.1.262**, Java **21** and Thaumaturge **1.0.4**. This is a foundation preview
+**21.1.262**, Java **21** and Thaumaturge **1.0.4**. This is a development preview
 of a broader recreation; it does not claim complete historical feature parity.
 
 Inspired by [Automagy 0.28.2 by Tuhljin](https://www.curseforge.com/minecraft/mc-mods/automagy).
@@ -13,12 +13,18 @@ Autoturgy is an original unofficial recreation; no original code or assets are r
 - Surface-mounted normal, amplified, dim, dense and resonating redcrystals.
 - Crystalline and entity eyes, remote comparator, vis reader, tally box,
   Signum Entia, editable ghost-sample runic filters and two tally lenses.
+- Hungry/finical maws, greedy/eager/tenacious physical chests.
+- Inventarium core, paid scribes, mixed-eye oculus, dedicated memory,
+  enhanced bookshelves and placed requisition tomes.
+- Melding/dispersing mirror adapters, hungry hand mirror and mercurial redcrystal.
 - Original textures, models, crafting recipes and searchable field notes.
 
 All listed devices perform their described function. Future machines are not
-registered as decorative substitutes. Storage, Inventarium, mirrors, fluids,
-golems, constructs, experience and equipment belong to subsequent development
-phases. Mercurial redcrystal awaits the mirror route implementation.
+registered as decorative substitutes. **Actual golem collection and delivery are
+pending**: requests reserve real source references but never move or create items
+on their own. Dispersing mirrors expose a tested explicit worker-custody contract
+for that later integration. No inert taskmaster is registered. Fluids, research,
+golems, constructs, experience and equipment belong to subsequent phases.
 
 ## Using the workshop
 
@@ -86,6 +92,89 @@ remain countable in every age mode. The player-identity control switches between
 the bound UUID and any player. Raw counts up to 255 remain available to
 redcrystal while vanilla output uses the configured full-strength threshold.
 
+## Storage and logistics
+
+Place maws against an inventory face. Hungry absorbs nearby loose items;
+Finical applies an attached filter. Committed insertion leaves overflow loose.
+The maws have attached plate outlines and no solid collision.
+
+The three chests have 27 real slots, persistent contents and ordinary manual
+access. Tenacious protects one of each component variant from automation,
+including vanilla hoppers, while allowing manual removal. Greedy watches new
+neighbor deposits every ten ticks. Its stick menu configures acquisition faces,
+fair percentage share, own-stock target or neighbor reserve. It refuses hoppers
+below and reciprocal greedy acquisition; one-way sharing and bottom barrels work.
+Fractional shares persist so repeated single deposits remain fair.
+
+Eager trades with the placer and authorized users when opened; sneaking bypasses
+trade. Apply a player-bound entity eye to authorize, or sneak-apply it to revoke.
+A whitelist restocks the player toward sample quantities, deposits excess and
+returns nonlisted chest items. A blacklist deposits nonlisted player items and
+returns listed chest surplus while retaining the configured quantities there.
+Full destinations preserve remainders. A stick opens chest controls.
+
+Build an Inventarium as **amber → host Ordo crystal → core**, vertically upward.
+At least eight eligible shelves anywhere within the radius-three cube complete
+the documented modern arrangement. Each basic/enchanting/ensorcelled shelf adds
+81/216/486 slots; the enhanced shelves also grant 4/8 ordinary shelves of enchanting
+power. The modern index budget is capped at 16,384 slots. Entire containers must
+fit. Only extractable contents visible through the selected capability face count.
+Physical containers, including both halves of a double chest, are deduplicated.
+
+Bind a core eye to each scribe. One baseline scribe plus one per nearby Ordo
+crystal is allowed, within 10+8 blocks per crystal. The first container directly
+behind the scribe selects its default type. A scribe normally scans a 7×7×7 cube
+once a second, paying one actual Ordo centivis through a host relay per scan.
+Use a stick for inventory-face controls; sneak-click to forget its type.
+Empty-hand right-click opens local or whole-system contents. An oculus above
+the scribe holds five eye links. Each self-targeted eye independently extends
+scan radius by one; other eyes add container types. These may be mixed. An
+empty-hand click removes its last eye. Nothing force-loads chunks.
+
+Each placed tome or dispersing mirror needs its own physical memory block.
+Eligible memory is two or three below the core, within three horizontally, and
+touches amber. Persistent memory reservations cannot be shared by two devices.
+Place a tome and attach a core-bound eye. Its range follows the same crystal
+allowance, and it continuously needs an Ordo relay at one centivis per second.
+The live server catalogue searches and pages every indexed identity, displays
+stock/reserved/wanted counts separately, and sorts by name or stock. Large
+values abbreviate in rows; tooltips retain exact totals. Queries are bounded
+and rate limited; requests validate the current menu, range, power and revision.
+
+Plus/minus changes only your own orders. Shift changes a stack, Ctrl multiplies
+by ten, and Alt permits demand above stock. A ghost sample or Shift-clicked
+inventory stack permits out-of-stock identities without consuming real items.
+Zero cancels. Orders and worker custody leases persist; reduction and cancellation
+retain recovery obligations for already carried items. The core or its shelves
+can feed a tally directly or through a remote comparator; a placed tome tallies
+its own actual demand.
+
+Modern safety bounds are 256 active/recovering orders per core, one million
+requested items per order, and 512 worker leases of at most 4,096 items each.
+The index is bounded at 16,384 slots. These are implementation limits rather
+than claims about undocumented historical constants.
+
+The tome's **Mirrors** button selects input/output eye configuration. Close the
+menu and attach an eye aimed at a mirror within 16 blocks. Its distinct real input
+slot passes actual stacks through the input route; a refusal keeps the stack in
+that slot. The output location names the actual mirror near this tome.
+
+Melding uses an eye bound to a real paired host entrance. Hand, hopper and loose
+input emerge from the paired exit, including across dimensions only when both
+ends are loaded and reciprocal. Dispersing binds a core eye, consumes one memory
+slot, and accepts only explicit persisted worker-custody tokens. It serves multiple
+tomes and queues their actual delivered items at each specified output mirror
+or melding adapter. Ordinary matching items are still unsolicited and are refused.
+This worker interface is tested, but automatic host-golem fulfillment is pending.
+
+Hungry Hand Mirror sneak-binds an existing paired entrance. Use an opposite-hand
+filter to copy list one, or sneak-use for list two. Automatic mode, toggled by
+sneak-use in air, considers only explicitly listed types: whitelists send listed
+items; blacklist quantities preserve a reserve and send surplus. Empty lists send
+nothing automatically. Ordinary use can send a real opposite-hand stack manually.
+Mercurial crystals beside both mirror endpoints carry directional internal power
+through the loaded pair. Source-free mirror cycles turn off.
+
 ## Build and verification
 
 Place legally obtained Thaumaturge 1.0.4, Curios 9.5.1 and Lithostitched 1.8.1
@@ -100,7 +189,8 @@ distributed or included inside this repository's release JAR.
 
 Client, server and GameTest worlds live in the wrapper's `validation/` folder.
 GameTests use a separate source set and are excluded from the release JAR.
-Their XML report is written to `../validation/phase1/gametest.xml`; JUnit XML is
+Their XML report defaults to `../validation/phase2/gametest.xml` (override with
+`-PtestPhase=phase1`, or another evidence phase); JUnit XML is
 in `build/test-results/test/`. Test results establish their covered behaviors,
 not full runtime or pack compatibility. Client and full-pack acceptance are
 tracked separately in the outer feature matrix.

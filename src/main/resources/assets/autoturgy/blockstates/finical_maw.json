@@ -1,0 +1,104 @@
+{
+  "variants": {
+    "attached=down,facing=north": {
+      "model": "autoturgy:block/finical_maw"
+    },
+    "attached=down,facing=east": {
+      "model": "autoturgy:block/finical_maw"
+    },
+    "attached=down,facing=south": {
+      "model": "autoturgy:block/finical_maw"
+    },
+    "attached=down,facing=west": {
+      "model": "autoturgy:block/finical_maw"
+    },
+    "attached=up,facing=north": {
+      "model": "autoturgy:block/finical_maw",
+      "x": 180
+    },
+    "attached=up,facing=east": {
+      "model": "autoturgy:block/finical_maw",
+      "x": 180
+    },
+    "attached=up,facing=south": {
+      "model": "autoturgy:block/finical_maw",
+      "x": 180
+    },
+    "attached=up,facing=west": {
+      "model": "autoturgy:block/finical_maw",
+      "x": 180
+    },
+    "attached=north,facing=north": {
+      "model": "autoturgy:block/finical_maw",
+      "x": 90
+    },
+    "attached=north,facing=east": {
+      "model": "autoturgy:block/finical_maw",
+      "x": 90
+    },
+    "attached=north,facing=south": {
+      "model": "autoturgy:block/finical_maw",
+      "x": 90
+    },
+    "attached=north,facing=west": {
+      "model": "autoturgy:block/finical_maw",
+      "x": 90
+    },
+    "attached=south,facing=north": {
+      "model": "autoturgy:block/finical_maw",
+      "x": 270
+    },
+    "attached=south,facing=east": {
+      "model": "autoturgy:block/finical_maw",
+      "x": 270
+    },
+    "attached=south,facing=south": {
+      "model": "autoturgy:block/finical_maw",
+      "x": 270
+    },
+    "attached=south,facing=west": {
+      "model": "autoturgy:block/finical_maw",
+      "x": 270
+    },
+    "attached=east,facing=north": {
+      "model": "autoturgy:block/finical_maw",
+      "x": 90,
+      "y": 90
+    },
+    "attached=east,facing=east": {
+      "model": "autoturgy:block/finical_maw",
+      "x": 90,
+      "y": 90
+    },
+    "attached=east,facing=south": {
+      "model": "autoturgy:block/finical_maw",
+      "x": 90,
+      "y": 90
+    },
+    "attached=east,facing=west": {
+      "model": "autoturgy:block/finical_maw",
+      "x": 90,
+      "y": 90
+    },
+    "attached=west,facing=north": {
+      "model": "autoturgy:block/finical_maw",
+      "x": 90,
+      "y": 270
+    },
+    "attached=west,facing=east": {
+      "model": "autoturgy:block/finical_maw",
+      "x": 90,
+      "y": 270
+    },
+    "attached=west,facing=south": {
+      "model": "autoturgy:block/finical_maw",
+      "x": 90,
+      "y": 270
+    },
+    "attached=west,facing=west": {
+      "model": "autoturgy:block/finical_maw",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

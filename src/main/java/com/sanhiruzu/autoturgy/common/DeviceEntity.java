@@ -151,7 +151,33 @@ public abstract class DeviceEntity extends BlockEntity implements MenuProvider {
 
   @Override
   public CompoundTag getUpdateTag(HolderLookup.Provider lookup) {
-    return saveWithoutMetadata(lookup);
+    CompoundTag display = new CompoundTag();
+    display.putInt("output", output);
+    display.putInt("progress", progress);
+    display.putIntArray("settings", settings.clone());
+    writeDisplay(display);
+    return display;
+  }
+
+  protected void writeDisplay(CompoundTag display) {}
+
+  protected void readDisplay(CompoundTag display) {}
+
+  @Override
+  public void handleUpdateTag(CompoundTag tag, HolderLookup.Provider lookup) {
+    output = Math.clamp(tag.getInt("output"), 0, 255);
+    progress = Math.clamp(tag.getInt("progress"), 0, 15);
+    int[] saved = tag.getIntArray("settings");
+    System.arraycopy(saved, 0, settings, 0, Math.min(saved.length, settings.length));
+    readDisplay(tag);
+  }
+
+  @Override
+  public void onDataPacket(
+      net.minecraft.network.Connection connection,
+      ClientboundBlockEntityDataPacket packet,
+      HolderLookup.Provider lookup) {
+    handleUpdateTag(packet.getTag(), lookup);
   }
 
   @Override

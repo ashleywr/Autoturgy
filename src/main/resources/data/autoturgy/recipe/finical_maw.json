@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " A ",
+    "IFI",
+    " H "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "F": {
+      "item": "autoturgy:runic_filter"
+    },
+    "H": {
+      "item": "minecraft:hopper"
+    },
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    }
+  },
+  "result": {
+    "id": "autoturgy:finical_maw",
+    "count": 1
+  }
+}

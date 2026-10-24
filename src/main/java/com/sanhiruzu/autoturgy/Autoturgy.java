@@ -17,6 +17,9 @@ public final class Autoturgy {
     SignalModule.register();
     RedcrystalNetwork.register();
     SensingModule.register();
+    com.sanhiruzu.autoturgy.storage.StorageModule.register(bus);
+    com.sanhiruzu.autoturgy.inventarium.InventariumModule.register(bus);
+    com.sanhiruzu.autoturgy.transport.MirrorModule.register(bus);
     ControlMenu.register();
     Content.register(bus);
   }

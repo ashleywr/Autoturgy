@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " I ",
+    "RVR",
+    " I "
+  ],
+  "key": {
+    "I": {
+      "item": "minecraft:iron_ingot"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "V": {
+      "item": "autoturgy:crystalline_eye"
+    }
+  },
+  "result": {
+    "id": "autoturgy:mercurial_redcrystal",
+    "count": 1
+  }
+}
