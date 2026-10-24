@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "autoturgy:block/remote_comparator",
+      "y": 0
+    },
+    "facing=east": {
+      "model": "autoturgy:block/remote_comparator",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "autoturgy:block/remote_comparator",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "autoturgy:block/remote_comparator",
+      "y": 270
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " G ",
+    "RCR",
+    " G "
+  ],
+  "key": {
+    "C": {
+      "item": "autoturgy:redcrystal"
+    },
+    "R": {
+      "item": "minecraft:redstone"
+    },
+    "G": {
+      "item": "minecraft:gold_ingot"
+    }
+  },
+  "result": {
+    "id": "autoturgy:amplified_redcrystal",
+    "count": 1
+  }
+}

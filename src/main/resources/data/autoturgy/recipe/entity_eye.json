@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " A ",
+    "YEY",
+    " A "
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "E": {
+      "item": "minecraft:ender_pearl"
+    },
+    "Y": {
+      "item": "minecraft:spider_eye"
+    }
+  },
+  "result": {
+    "id": "autoturgy:entity_eye",
+    "count": 1
+  }
+}

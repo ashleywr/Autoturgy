@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " Q ",
+    " C ",
+    " Q "
+  ],
+  "key": {
+    "C": {
+      "item": "autoturgy:redcrystal"
+    },
+    "Q": {
+      "item": "minecraft:quartz"
+    }
+  },
+  "result": {
+    "id": "autoturgy:dim_redcrystal",
+    "count": 1
+  }
+}

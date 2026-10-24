@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+    "autoturgy:analog_inverter",
+    "autoturgy:hourglass",
+    "autoturgy:magic_hourglass",
+    "autoturgy:redcrystal",
+    "autoturgy:amplified_redcrystal",
+    "autoturgy:dim_redcrystal",
+    "autoturgy:dense_redcrystal",
+    "autoturgy:resonating_redcrystal",
+    "autoturgy:remote_comparator",
+    "autoturgy:vis_reader",
+    "autoturgy:tally_box",
+    "autoturgy:signum_entia"
+  ]
+}

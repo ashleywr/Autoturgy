@@ -1,0 +1,39 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.134'
+}
+group = 'com.sanhiruzu.autoturgy'
+version = '0.1.0'
+base.archivesName = 'autoturgy-neoforge-1.21.1'
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+repositories { mavenCentral() }
+sourceSets {
+    gameTest {
+        compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+        runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+    }
+}
+configurations { gameTestImplementation.extendsFrom implementation; gameTestRuntimeOnly.extendsFrom runtimeOnly }
+neoForge {
+    version = '21.1.262'
+    runs {
+        client { client(); gameDirectory = file('../validation/client') }
+        server { server(); gameDirectory = file('../validation/server'); programArgument '--nogui' }
+        gameTestServer {
+            type = 'gameTestServer'
+            gameDirectory = file('../validation/gametest')
+            systemProperty 'neoforge.enabledGameTestNamespaces', 'autoturgy'
+            systemProperty 'autoturgy.testReport', file('../validation/phase1/gametest.xml').absolutePath
+        }
+    }
+    mods {
+        autoturgy { sourceSet sourceSets.main; sourceSet sourceSets.gameTest }
+    }
+}
+dependencies {
+    implementation fileTree(dir: '../dependencies', include: ['*.jar'])
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.10.2'
+}
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+tasks.named('test', Test) { useJUnitPlatform() }

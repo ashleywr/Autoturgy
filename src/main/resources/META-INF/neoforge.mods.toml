@@ -1,0 +1,26 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="All Rights Reserved"
+[[mods]]
+modId="autoturgy"
+version="0.1.0"
+displayName="Autoturgy"
+description='''Original magical automation for Thaumaturge. Foundation preview; see the field guide for supported devices.'''
+[[dependencies.autoturgy]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.262,)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.autoturgy]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1,1.21.2)"
+ordering="NONE"
+side="BOTH"
+[[dependencies.autoturgy]]
+modId="thaumaturge"
+type="required"
+versionRange="[1.0.4,)"
+ordering="AFTER"
+side="BOTH"

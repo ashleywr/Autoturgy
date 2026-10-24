@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " E ",
+    "ACA",
+    " E "
+  ],
+  "key": {
+    "C": {
+      "item": "autoturgy:redcrystal"
+    },
+    "A": {
+      "item": "minecraft:amethyst_shard"
+    },
+    "E": {
+      "item": "minecraft:ender_pearl"
+    }
+  },
+  "result": {
+    "id": "autoturgy:resonating_redcrystal",
+    "count": 1
+  }
+}
