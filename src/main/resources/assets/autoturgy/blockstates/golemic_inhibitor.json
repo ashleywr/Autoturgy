@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "autoturgy:block/golemic_inhibitor",
+      "y": 0
+    },
+    "facing=east": {
+      "model": "autoturgy:block/golemic_inhibitor",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "autoturgy:block/golemic_inhibitor",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "autoturgy:block/golemic_inhibitor",
+      "y": 270
+    }
+  }
+}

@@ -19,14 +19,13 @@ Autoturgy is an original unofficial recreation; no original code or assets are r
 - Melding/dispersing mirror adapters, hungry hand mirror and mercurial redcrystal.
 - Thirsty tank, nine physical face glyphs, milk and two soup fluids.
 - Fueled alchemical boiler, real host alembics, validated essentia locus and aggregator.
+- Golem linking bell, reversible inhibitor, physical-delivery taskmaster and golem workbench.
 - Original textures, models, host research/magical recipes and searchable field notes.
 
-All listed devices perform their described function. Future machines are not
-registered as decorative substitutes. **Actual golem collection and delivery are
-pending**: requests reserve real source references but never move or create items
-on their own. Dispersing mirrors expose a tested explicit worker-custody contract
-for that later integration. No inert taskmaster is registered. Golems, constructs,
-experience and portable equipment belong to subsequent phases.
+All listed devices perform their described function. Real host golems walk,
+collect actual indexed items, carry them in host hands and deliver through
+validated reservations. Constructs, experience and portable equipment remain
+subsequent phases; this preview does not claim complete feature parity.
 
 ## Using the workshop
 
@@ -167,7 +166,9 @@ ends are loaded and reciprocal. Dispersing binds a core eye, consumes one memory
 slot, and accepts only explicit persisted worker-custody tokens. It serves multiple
 tomes and queues their actual delivered items at each specified output mirror
 or melding adapter. Ordinary matching items are still unsolicited and are refused.
-This worker interface is tested, but automatic host-golem fulfillment is pending.
+Real linked host golems now fulfill this worker interface. Dispersers claim their
+own memory and receive explicit worker leases before routing to the current
+paid tome's selected output. Ordinary containers respect their selected side.
 
 Hungry Hand Mirror sneak-binds an existing paired entrance. Use an opposite-hand
 filter to copy list one, or sneak-use for list two. Automatic mode, toggled by
@@ -191,7 +192,7 @@ distributed or included inside this repository's release JAR.
 
 Client, server and GameTest worlds live in the wrapper's `validation/` folder.
 GameTests use a separate source set and are excluded from the release JAR.
-Their XML report defaults to `../validation/phase3/gametest.xml` (override with
+Their XML report defaults to `../validation/phase4a/gametest.xml` (override with
 `-PtestPhase=phase2`, or another evidence phase); JUnit XML is
 in `build/test-results/test/`. Test results establish their covered behaviors,
 not full runtime or pack compatibility. Client and full-pack acceptance are
@@ -273,9 +274,82 @@ source discovery path. Reservoirs expose conduit/aspect source rather than a
 storage capability in host 1.0.4, so a small adapter delegates their real methods.
 
 These capacities, shapes, costs and rates are modern defaults wherever the
-public reference omits numbers. New fluid/research/menu visuals still need the
-parent's frozen-JAR client review; later feature families and full-pack acceptance
-remain pending.
+public reference omits numbers. The phase-three frozen client review observed
+actual tank capacity/intake, paid boiler output, bound locus eyes, soup/milk
+conservation, natural vishroom growth, real mirror deliveries and host research
+pages. Later feature families and final full-pack acceptance remain pending.
+
+## Host golems and workbench
+
+Attune the **Golem Linking Bell** to a placed inhibitor, taskmaster or workbench,
+then use it on one of your own Thaumaturge golems. One device owns each link;
+at most six golems link to a device. Sneak-use the bell on a device to clear its
+links, or on another block to clear attunement. Normal client entity interaction
+is supported. Finish existing host tasks and empty hands before assigning work.
+Death and ordinary host pickup retire metadata without fulfilling the order;
+the host drops its real hands. Deferred notices survive unloaded device chunks
+and retire when that placement loads or has been replaced.
+Linking and work require the same dimension. Portal travel detaches device links;
+already carried items drop safely in the arrival dimension and demand stays open.
+
+An **Inhibitor** sits above one to four consecutive, actually powered host
+fetters. Modern radii are 8/16/24/32 blocks. Its menu chooses linked exemptions
+or linked-only targets. Only its owner's golems are affected; combat takes
+precedence. Reversible goals preserve external NoAI and ordinary host goals.
+Overlapping inhibitors keep pausing until the last applicable device stops,
+unloads, breaks or loses range. Candidates use local chunk buckets and a bounded
+4096-device inspection budget per golem.
+
+Bind a **Taskmaster** to a functional Inventarium Core using a crystalline eye.
+It requires its own real memory slot and the core's cluster-expanded link range.
+Linked workers need their host home within five blocks. Host 1.0.4 fill/empty
+eligibility comes directly from its registered seal trait requirements: both
+exclude Clumsy. Fine arms provide Deft; claw/breaker/dart arms carry Clumsy.
+Smart heads permit advanced workbench patterns. No legacy animation-core item
+is invented. Golems use their actual navigation, movement speed and hands.
+
+Paid tome requests claim physical source slots. Workers walk within two blocks
+of the source/destination block surface, revalidate sided capabilities, collect
+real items and acknowledge only actual delivery. Full, absent or unloaded targets
+retain hands. Cancellation returns surplus; a removed/full source produces a safe
+physical drop. Reloaded custody never re-reserves its carried quantity. A narrow
+public home adapter suppresses the host's first-load teleport during carried
+journeys, then restores the saved home/radius. Host seal tasks cannot steal addon
+custody, including during a parts/selector rebuild. No destination is force-loaded.
+
+The **Golem's Workbench** provides nine ghost slots per enabled pattern, eighteen
+real ingredient slots and nine product slots. Link a host Empty-compatible golem.
+Basic workers handle a 2×2 bounding grid or one repeated ingredient; Smart workers
+handle full mixed 3×3 recipes. Only real registered ordinary crafting recipes
+work. The front routes products to a sided neighbor; bottom automation extracts
+products, other faces access ingredients. A powered fetter directly underneath
+pauses crafting while output still moves. Default noningredient remainders drop;
+Order retains them where space permits. Ghosts never become physical items.
+
+Use one removable upgrade on each cardinal side. Sneak-use that side with an
+empty hand or host wand to recover it. Air uses actual move speed for a faster
+interval at increased fatigue. Earth uses the greater of host material damage
+and actual attack damage, improving rate and endurance. Fire adds one ghost
+pattern page each, up to two extra pages. Removing Fire retains dormant patterns
+and every real ingredient. Entropy is unique: the real first ingredient slot
+identifies a ghost placeholder; other stored ingredients substitute only when
+a registered recipe yields the nominal product or an explicitly permitted filter
+product. Invalid substitutions consume nothing.
+
+Modern Water adaptation improves resting recovery next to actual water. Work
+starts at forty ticks, bounded to at least four after upgrades. Base effort is
+four; each Air adds three, Entropy adds six and Earth subtracts two (minimum one).
+Fatigue stops work at 100 and is capped at 120. Recovery is one point each second,
+plus three per Water side when touching water. At fatigue twenty or above, one
+actual unbraced Fabrico essentia within a 5×3×5 box restores forty points. Actual
+source blocking and output-face permissions apply. These are modern defaults.
+
+Phase-four-a automation covers fully initialized real host entities, strict
+walking/hand conservation, two competing workers, cancellation/full output,
+saved custody without a teleport, source-side revocation, death and host pickup,
+genuine separate Nether-core chunk unload/death/reload, inhibition overlap and
+host-goal restoration, real recipes/remainders and every upgrade. Frozen release
+client inspection of these new devices and the disperser remains pending.
 
 ## Extending progression
 

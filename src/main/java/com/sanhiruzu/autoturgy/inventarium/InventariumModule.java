@@ -185,6 +185,7 @@ public final class InventariumModule {
   public static final class CoreEntity extends DeviceEntity
       implements DeviceBlock.Ticking, TallyService.CountProvider {
     public final Requisitions orders = new Requisitions();
+    public UUID identity = UUID.randomUUID();
     public final Set<BlockPos> scribes = new LinkedHashSet<>();
     public InventoryIndex.Snapshot index = InventoryIndex.Snapshot.empty();
     public Structure structure = new Structure(false, 0, 0, false);
@@ -244,6 +245,11 @@ public final class InventariumModule {
       super(CORE_TYPE.get(), p, s);
     }
 
+    public void onLoad() {
+      super.onLoad();
+      if (!level.isClientSide) com.sanhiruzu.autoturgy.golems.LinkRemovals.coreLoaded(this);
+    }
+
     public String kind() {
       return "inventarium_core";
     }
@@ -301,6 +307,7 @@ public final class InventariumModule {
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider lookup) {
       super.saveAdditional(tag, lookup);
       tag.put("orders", orders.save(lookup));
+      tag.putUUID("identity", identity);
       tag.putLongArray(
           "scribes", scribes.stream().limit(344).mapToLong(BlockPos::asLong).toArray());
     }
@@ -309,6 +316,7 @@ public final class InventariumModule {
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider lookup) {
       super.loadAdditional(tag, lookup);
       orders.load(tag.getCompound("orders"), lookup);
+      identity = tag.hasUUID("identity") ? tag.getUUID("identity") : UUID.randomUUID();
       scribes.clear();
       for (long p : tag.getLongArray("scribes"))
         if (scribes.size() < 344) scribes.add(BlockPos.of(p));

@@ -49,6 +49,17 @@ public final class MirrorRoutes {
       return simulate || mirror.transportDirect(stack.copy()) ? ItemStack.EMPTY : stack.copy();
     if (be instanceof MirrorModule.MirrorEntity adapter && !adapter.dispersing())
       return adapter.input.insertItem(0, stack, simulate);
+    var world = LoadedTargets.level(server, destination).orElse(null);
+    if (world != null) {
+      var handler =
+          world.getCapability(
+              net.neoforged.neoforge.capabilities.Capabilities.ItemHandler.BLOCK,
+              destination.pos(),
+              destination.side());
+      if (handler != null)
+        return net.neoforged.neoforge.items.ItemHandlerHelper.insertItemStacked(
+            handler, stack, simulate);
+    }
     return stack.copy();
   }
 

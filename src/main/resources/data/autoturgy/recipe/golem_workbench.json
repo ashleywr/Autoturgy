@@ -1,0 +1,39 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "minecraft:crafting_table"
+  },
+  "components": [
+    {
+      "item": "autoturgy:terra_crystalline_brain"
+    },
+    {
+      "item": "autoturgy:enchanted_paper"
+    },
+    {
+      "item": "thaumaturge:ingot_thaumium"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:fabrico",
+      "amount": 24
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:motus",
+      "amount": 12
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:golem_crafting"
+  },
+  "result": {
+    "id": "autoturgy:golem_workbench",
+    "count": 1
+  }
+}

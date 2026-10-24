@@ -1,0 +1,39 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "autoturgy:terra_crystalline_brain"
+  },
+  "components": [
+    {
+      "item": "thaumaturge:ingot_thaumium"
+    },
+    {
+      "item": "autoturgy:enchanted_paper"
+    },
+    {
+      "item": "minecraft:gold_nugget"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:terra",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:fabrico",
+      "amount": 12
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 8
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:golem_upgrades"
+  },
+  "result": {
+    "id": "autoturgy:workbench_upgrade_earth",
+    "count": 1
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "thaumaturge:golem_bell"
+  },
+  "components": [
+    {
+      "item": "autoturgy:ordo_crystalline_brain"
+    },
+    {
+      "item": "autoturgy:enchanted_paper"
+    },
+    {
+      "item": "minecraft:gold_ingot"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 12
+    },
+    {
+      "aspect": "thaumaturge:vinculum",
+      "amount": 12
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:golem_links"
+  },
+  "result": {
+    "id": "autoturgy:golem_linking_bell",
+    "count": 1
+  }
+}

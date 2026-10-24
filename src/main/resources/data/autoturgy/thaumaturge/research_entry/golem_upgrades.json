@@ -1,0 +1,54 @@
+{
+  "category": "autoturgy:automation",
+  "name": "research.autoturgy.golem_upgrades.title",
+  "parents": [
+    "autoturgy:golem_crafting"
+  ],
+  "column": 6,
+  "row": 0,
+  "icons": [
+    "autoturgy:workbench_upgrade_air"
+  ],
+  "stages": [
+    {
+      "text": "research.autoturgy.golem_upgrades.study",
+      "obtain": [
+        {
+          "items": [
+            "minecraft:paper"
+          ],
+          "amount": 1
+        }
+      ],
+      "required_knowledge": [
+        {
+          "type": "observation",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "text": "research.autoturgy.golem_upgrades.complete",
+      "recipes": [
+        "autoturgy:workbench_upgrade_air",
+        "autoturgy:workbench_upgrade_fire",
+        "autoturgy:workbench_upgrade_earth",
+        "autoturgy:workbench_upgrade_water",
+        "autoturgy:workbench_upgrade_order",
+        "autoturgy:workbench_upgrade_entropy"
+      ]
+    }
+  ],
+  "note_aspects": [
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    }
+  ],
+  "complexity": 2
+}

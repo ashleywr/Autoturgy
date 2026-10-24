@@ -192,6 +192,7 @@ public final class MirrorModule {
     }
 
     public void serverTick() {
+      if (dispersing() && level.getGameTime() % 20 == 0 && target != null) core();
       if (level.getGameTime() % 4 != 0) return;
       for (ItemEntity entity :
           level.getEntitiesOfClass(

@@ -1,0 +1,39 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "thaumaturge:golem_fetter"
+  },
+  "components": [
+    {
+      "item": "autoturgy:perditio_crystalline_brain"
+    },
+    {
+      "item": "thaumaturge:ingot_thaumium"
+    },
+    {
+      "item": "autoturgy:bound_paper"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:vinculum",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:motus",
+      "amount": 12
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 8
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:golem_links"
+  },
+  "result": {
+    "id": "autoturgy:golemic_inhibitor",
+    "count": 1
+  }
+}

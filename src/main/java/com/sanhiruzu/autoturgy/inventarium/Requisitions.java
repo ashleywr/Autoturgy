@@ -247,6 +247,23 @@ public final class Requisitions {
     return true;
   }
 
+  /** Host death drops its real hands. Retire metadata without satisfying the order. */
+  public void workerDied(UUID worker) {
+    Set<UUID> affected = new HashSet<>();
+    for (Lease lease : List.copyOf(leases.values()))
+      if (lease.worker.equals(worker)) {
+        affected.add(lease.order);
+        leases.remove(lease.id);
+      }
+    for (UUID id : affected) {
+      Order order = orders.get(id);
+      if (order != null) {
+        rebalance(order);
+        cleanup(order);
+      }
+    }
+  }
+
   /** A physical return releases recovery metadata without pretending to fulfill demand. */
   public int returned(UUID leaseId, UUID worker, ItemStack actual, int quantity) {
     return finishLease(leaseId, worker, actual, quantity, false);

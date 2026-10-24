@@ -1,0 +1,50 @@
+{
+  "category": "autoturgy:automation",
+  "name": "research.autoturgy.golem_links.title",
+  "parents": [
+    "autoturgy:signals"
+  ],
+  "column": 4,
+  "row": 0,
+  "icons": [
+    "autoturgy:golem_linking_bell"
+  ],
+  "stages": [
+    {
+      "text": "research.autoturgy.golem_links.study",
+      "obtain": [
+        {
+          "items": [
+            "minecraft:paper"
+          ],
+          "amount": 1
+        }
+      ],
+      "required_knowledge": [
+        {
+          "type": "observation",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "text": "research.autoturgy.golem_links.complete",
+      "recipes": [
+        "autoturgy:golem_linking_bell",
+        "autoturgy:golemic_inhibitor"
+      ]
+    }
+  ],
+  "note_aspects": [
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    }
+  ],
+  "complexity": 2
+}

@@ -1,0 +1,42 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "autoturgy:inventarium_memory"
+  },
+  "components": [
+    {
+      "item": "autoturgy:ordo_crystalline_brain"
+    },
+    {
+      "item": "autoturgy:conflux_disc"
+    },
+    {
+      "item": "minecraft:gold_ingot"
+    },
+    {
+      "item": "autoturgy:bound_paper"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 20
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:motus",
+      "amount": 12
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:golem_logistics"
+  },
+  "result": {
+    "id": "autoturgy:golemic_taskmaster",
+    "count": 1
+  }
+}
