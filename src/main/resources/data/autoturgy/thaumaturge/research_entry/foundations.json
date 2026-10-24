@@ -1,0 +1,68 @@
+{
+  "category": "autoturgy:automation",
+  "name": "research.autoturgy.foundations.title",
+  "parents": [
+    "thaumaturge:unlock_artifice"
+  ],
+  "column": 0,
+  "row": 0,
+  "icons": [
+    "autoturgy:enchanted_paper"
+  ],
+  "stages": [
+    {
+      "text": "research.autoturgy.foundations.study",
+      "obtain": [
+        {
+          "items": [
+            "minecraft:paper"
+          ],
+          "amount": 1
+        }
+      ],
+      "required_knowledge": [
+        {
+          "type": "observation",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "text": "research.autoturgy.foundations.complete",
+      "recipes": [
+        "autoturgy:aer_crystal_reassembly",
+        "autoturgy:aer_crystalline_brain",
+        "autoturgy:aer_sliver",
+        "autoturgy:aqua_crystal_reassembly",
+        "autoturgy:aqua_crystalline_brain",
+        "autoturgy:aqua_sliver",
+        "autoturgy:bound_paper",
+        "autoturgy:enchanted_paper",
+        "autoturgy:ignis_crystal_reassembly",
+        "autoturgy:ignis_crystalline_brain",
+        "autoturgy:ignis_sliver",
+        "autoturgy:ordo_crystal_reassembly",
+        "autoturgy:ordo_crystalline_brain",
+        "autoturgy:ordo_sliver",
+        "autoturgy:perditio_crystal_reassembly",
+        "autoturgy:perditio_crystalline_brain",
+        "autoturgy:perditio_sliver",
+        "autoturgy:terra_crystal_reassembly",
+        "autoturgy:terra_crystalline_brain",
+        "autoturgy:terra_sliver"
+      ]
+    }
+  ],
+  "note_aspects": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 2
+    }
+  ],
+  "complexity": 1
+}

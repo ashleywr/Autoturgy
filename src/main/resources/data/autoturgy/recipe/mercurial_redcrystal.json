@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "thaumaturge:arcane_workbench_shaped",
   "pattern": [
     " I ",
     "RVR",
@@ -19,5 +19,19 @@
   "result": {
     "id": "autoturgy:mercurial_redcrystal",
     "count": 1
+  },
+  "crystals": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 1
+    },
+    {
+      "aspect": "thaumaturge:aer",
+      "amount": 1
+    }
+  ],
+  "vis": 20,
+  "research": {
+    "entry": "autoturgy:signals"
   }
 }

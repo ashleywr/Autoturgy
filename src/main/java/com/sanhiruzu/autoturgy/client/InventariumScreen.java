@@ -33,9 +33,9 @@ public final class InventariumScreen extends AbstractContainerScreen<Inventarium
             topPos + 31,
             190,
             18,
-            Component.translatable("menu.autoturgy.search"));
+            Component.translatable("menu.autoturgy.inventory_search"));
     search.setMaxLength(64);
-    search.setHint(Component.translatable("menu.autoturgy.search"));
+    search.setHint(Component.translatable("menu.autoturgy.inventory_search"));
     search.setResponder(s -> queryDelay = 5);
     addRenderableWidget(search);
     addRenderableWidget(

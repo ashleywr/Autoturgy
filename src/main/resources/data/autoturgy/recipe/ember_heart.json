@@ -1,0 +1,32 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "minecraft:blaze_rod"
+  },
+  "components": [
+    {
+      "item": "thaumaturge:alumentum"
+    },
+    {
+      "item": "autoturgy:ignis_crystalline_brain"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:ignis",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:potentia",
+      "amount": 8
+    }
+  ],
+  "instability": 1,
+  "research": {
+    "entry": "autoturgy:alchemy"
+  },
+  "result": {
+    "id": "autoturgy:ember_heart",
+    "count": 1
+  }
+}

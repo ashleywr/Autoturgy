@@ -1,0 +1,51 @@
+{
+  "category": "autoturgy:automation",
+  "name": "research.autoturgy.fluids.title",
+  "parents": [
+    "autoturgy:storage",
+    "thaumaturge:essentia_smelter"
+  ],
+  "column": 6,
+  "row": 2,
+  "icons": [
+    "autoturgy:thirsty_tank"
+  ],
+  "stages": [
+    {
+      "text": "research.autoturgy.fluids.study",
+      "obtain": [
+        {
+          "items": [
+            "minecraft:paper"
+          ],
+          "amount": 1
+        }
+      ],
+      "required_knowledge": [
+        {
+          "type": "observation",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "text": "research.autoturgy.fluids.complete",
+      "recipes": [
+        "autoturgy:aqueous_admixture",
+        "autoturgy:thirsty_tank"
+      ]
+    }
+  ],
+  "note_aspects": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 2
+    }
+  ],
+  "complexity": 1
+}

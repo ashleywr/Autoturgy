@@ -1,0 +1,19 @@
+{
+  "type": "thaumaturge:crucible",
+  "catalyst": {
+    "item": "minecraft:ink_sac"
+  },
+  "aspects": [
+    {
+      "aspect": "thaumaturge:aqua",
+      "amount": 8
+    }
+  ],
+  "research": {
+    "entry": "autoturgy:fluids"
+  },
+  "result": {
+    "id": "autoturgy:aqueous_admixture",
+    "count": 4
+  }
+}

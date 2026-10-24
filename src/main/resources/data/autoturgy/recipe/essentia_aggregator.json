@@ -1,0 +1,42 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "thaumaturge:crystal_aqua"
+  },
+  "components": [
+    {
+      "item": "autoturgy:conflux_disc"
+    },
+    {
+      "item": "thaumaturge:tube"
+    },
+    {
+      "item": "thaumaturge:tube"
+    },
+    {
+      "item": "thaumaturge:ingot_thaumium"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:aqua",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:alienis",
+      "amount": 12
+    },
+    {
+      "aspect": "thaumaturge:vacuos",
+      "amount": 12
+    }
+  ],
+  "instability": 1,
+  "research": {
+    "entry": "autoturgy:essentia"
+  },
+  "result": {
+    "id": "autoturgy:essentia_aggregator",
+    "count": 1
+  }
+}

@@ -27,6 +27,10 @@
     "autoturgy:melding_mirror",
     "autoturgy:dispersing_mirror",
     "autoturgy:mercurial_redcrystal",
-    "autoturgy:requisition_tome"
+    "autoturgy:requisition_tome",
+    "autoturgy:thirsty_tank",
+    "autoturgy:alchemical_boiler",
+    "autoturgy:essentia_locus",
+    "autoturgy:essentia_aggregator"
   ]
 }

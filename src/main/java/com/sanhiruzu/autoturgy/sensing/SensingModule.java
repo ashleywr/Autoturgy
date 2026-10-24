@@ -301,6 +301,10 @@ public final class SensingModule {
     }
 
     public ThaumaturgeIntegration.Snapshot reading() {
+      if (target == null) {
+        var locus = com.sanhiruzu.autoturgy.essentia.EssentiaModule.reading(level, worldPosition);
+        if (locus != null) return locus;
+      }
       return target != null && LoadedTargets.local(level, worldPosition, target, 20)
           ? ThaumaturgeIntegration.read(level, target.pos(), target.side())
           : ThaumaturgeIntegration.Snapshot.invalid();

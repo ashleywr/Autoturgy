@@ -1,0 +1,35 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "thaumaturge:brain"
+  },
+  "components": [
+    {
+      "item": "autoturgy:ignis_sliver"
+    },
+    {
+      "item": "autoturgy:ignis_sliver"
+    },
+    {
+      "item": "minecraft:quartz"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:ignis",
+      "amount": 8
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 4
+    }
+  ],
+  "instability": 1,
+  "research": {
+    "entry": "autoturgy:foundations"
+  },
+  "result": {
+    "id": "autoturgy:ignis_crystalline_brain",
+    "count": 1
+  }
+}

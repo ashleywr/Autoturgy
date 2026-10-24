@@ -67,6 +67,7 @@ public final class MirrorModule {
         InteractionHand hand,
         BlockHitResult hit) {
       if (level.getBlockEntity(pos) instanceof MirrorEntity mirror) {
+        if (stack.isEmpty()) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         if (stack.is(SensingModule.EYE.get()) || stack.is(SensingModule.FILTER.get()))
           return super.useItemOn(stack, state, level, pos, player, hand, hit);
         if (!level.isClientSide) {

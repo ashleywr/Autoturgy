@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "thaumaturge:arcane_workbench_shaped",
   "category": "misc",
   "pattern": [
     "PAP",
@@ -8,7 +8,7 @@
   ],
   "key": {
     "P": {
-      "item": "minecraft:paper"
+      "item": "autoturgy:enchanted_paper"
     },
     "A": {
       "item": "minecraft:amethyst_shard"
@@ -23,5 +23,19 @@
   "result": {
     "id": "autoturgy:runic_filter",
     "count": 1
+  },
+  "crystals": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 1
+    },
+    {
+      "aspect": "thaumaturge:aer",
+      "amount": 1
+    }
+  ],
+  "vis": 20,
+  "research": {
+    "entry": "autoturgy:filters"
   }
 }

@@ -1,0 +1,20 @@
+{
+  "background": "autoturgy:textures/research_background.png",
+  "icon": "autoturgy:textures/research_icon.png",
+  "index": 8,
+  "required_research": "thaumaturge:unlock_artifice",
+  "formula": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 10
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 5
+    },
+    {
+      "aspect": "thaumaturge:aqua",
+      "amount": 5
+    }
+  ]
+}

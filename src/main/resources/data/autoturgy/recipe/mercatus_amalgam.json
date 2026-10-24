@@ -1,0 +1,23 @@
+{
+  "type": "thaumaturge:crucible",
+  "catalyst": {
+    "item": "minecraft:gold_ingot"
+  },
+  "aspects": [
+    {
+      "aspect": "thaumaturge:desiderium",
+      "amount": 8
+    },
+    {
+      "aspect": "thaumaturge:metallum",
+      "amount": 4
+    }
+  ],
+  "research": {
+    "entry": "autoturgy:storage"
+  },
+  "result": {
+    "id": "autoturgy:mercatus_amalgam",
+    "count": 2
+  }
+}

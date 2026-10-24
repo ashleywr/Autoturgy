@@ -46,7 +46,7 @@ public final class ControlMenu extends AbstractContainerMenu {
     for (int i = 0; i < count; i++) options.add(buf.readUtf(128));
     selections = List.copyOf(options);
     data = new SimpleContainerData(14);
-    addDataSlots(data);
+    addDataSlots(MenuIntTransport.wire(data));
   }
 
   public ControlMenu(int id, Inventory inv, DeviceEntity device) {
@@ -70,7 +70,7 @@ public final class ControlMenu extends AbstractContainerMenu {
             return 14;
           }
         };
-    addDataSlots(data);
+    addDataSlots(MenuIntTransport.wire(data));
   }
 
   @Override

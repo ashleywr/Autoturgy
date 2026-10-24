@@ -17,14 +17,16 @@ Autoturgy is an original unofficial recreation; no original code or assets are r
 - Inventarium core, paid scribes, mixed-eye oculus, dedicated memory,
   enhanced bookshelves and placed requisition tomes.
 - Melding/dispersing mirror adapters, hungry hand mirror and mercurial redcrystal.
-- Original textures, models, crafting recipes and searchable field notes.
+- Thirsty tank, nine physical face glyphs, milk and two soup fluids.
+- Fueled alchemical boiler, real host alembics, validated essentia locus and aggregator.
+- Original textures, models, host research/magical recipes and searchable field notes.
 
 All listed devices perform their described function. Future machines are not
 registered as decorative substitutes. **Actual golem collection and delivery are
 pending**: requests reserve real source references but never move or create items
 on their own. Dispersing mirrors expose a tested explicit worker-custody contract
-for that later integration. No inert taskmaster is registered. Fluids, research,
-golems, constructs, experience and equipment belong to subsequent phases.
+for that later integration. No inert taskmaster is registered. Golems, constructs,
+experience and portable equipment belong to subsequent phases.
 
 ## Using the workshop
 
@@ -189,15 +191,103 @@ distributed or included inside this repository's release JAR.
 
 Client, server and GameTest worlds live in the wrapper's `validation/` folder.
 GameTests use a separate source set and are excluded from the release JAR.
-Their XML report defaults to `../validation/phase2/gametest.xml` (override with
-`-PtestPhase=phase1`, or another evidence phase); JUnit XML is
+Their XML report defaults to `../validation/phase3/gametest.xml` (override with
+`-PtestPhase=phase2`, or another evidence phase); JUnit XML is
 in `build/test-results/test/`. Test results establish their covered behaviors,
 not full runtime or pack compatibility. Client and full-pack acceptance are
 tracked separately in the outer feature matrix.
 
-Current recipes are deliberately disclosed interim material recipes. Host
-research and magical recipe costs are pending the recipe integration phase.
+Magical recipes use actual host research gates and arcane/infusion/crucible costs.
+The ordinary inverter, ordinary hourglass, guide, soup and milk conversion crafts
+remain intentionally mundane. All earlier magical material-recipe bypasses were
+replaced. Complete the original Autoturgy category in the host research interface.
 Unknown historical timing constants use the documented modern defaults above.
 
 Source namespace `com.sanhiruzu.autoturgy` is first-party. The implementation,
 art and prose are original; no historical mod classes or assets are included.
+
+
+## Fluids and essentia
+
+The **Thirsty Tank** holds 16 buckets, plus 16 per Reservoir glyph. Apply one
+physical glyph per face; sneak-use that face with a stick or host wand to remove
+it. Removal refuses if the smaller capacity would strand fluid. Empty-hand use
+shows read-only glyph, fluid and capacity data. Menu integers use two vanilla
+16-bit property words, preserving full 32-bit amounts and existing thresholds.
+
+The tank follows connected matching fluid paths within 16 blocks and 256 visited
+positions, once per 20 ticks, collecting one bucketable source. Adjacent water
+sources remain renewable. Exposed rain adds 25 mB per collection. A source is
+checked against actual acceptance first; if source-removal callbacks change the
+intake gate, its paid fluid remains in persisted recovery custody. Breaking the
+tank drops one filled tank preserving all fluid, glyphs and recovery custody.
+
+Void destroys compatible overflow; Consumption drains 100 mB per collection per
+glyph. Siphoning pushes and Envy pulls up to 1000 mB through their face.
+Temperance requires redstone for intake; Preservation retains 1 mB. Guzzler
+reduces collection intervals, capped at 2 ticks. Bovine disables world absorption
+and milks adult cows in a four-block directional area; every cow persists its
+own shared 1200-tick cooldown across tanks and reloads.
+
+Water bottles and mushroom/vishroom stew bowls exchange 250 mB, preserving return
+containers. Milk uses NeoForge's standard fluid identity. Craft an ordinary milk
+bucket into a **Pouring Milk Bucket**: use normally to drink and cure effects,
+or sneak-use to place a stable, bucketable milk source. This explicit modern
+source does not spread. Mushroom and vishroom soup have flowing blocks and
+placeable buckets. Vishroom stew uses the real host vishroom, provides little
+food, nausea/hunger and one temporary warp. Source immersion adds nausea and one
+temporary warp per 200 ticks; source random ticks can grow actual vishrooms on
+legal nearby surfaces within two blocks.
+
+The **Alchemical Boiler** accepts real fuel and fluid. Stack up to five actual
+host alembics above it. Whole 1000 mB batches take 100 fuel ticks, accelerated by
+up to four correctly attached host bellows; alumentum uses its real burn time.
+The actual host aspect index determines yield. Bucket fluids subtract every
+empty-bucket aspect; soup uses four servings minus their bowl aspects. Unknown
+or empty net yields produce nothing. Full output stalls before consuming fluid
+or new fuel. Paid pending output persists if an alembic changes. Thaumaturge
+1.0.4 intentionally refuses alembic conduit/storage intake, so this producer uses
+its public furnace-side `IAspectContainer.fill` API, including its remainder.
+Breaking the boiler destroys fluid/pending essentia and drops unused fuel.
+
+The **Essentia Locus** uses this documented modern construct: center lapis in a
+3×3 pool of eight water sources, a full 5×5 silverwood-plank outer ring at that
+height, an Aqua crystal cluster above lapis and the locus above the cluster.
+Insert a loaded, in-range jar/reservoir eye. One eye floods connected real
+containers, initially 12 within 16 blocks. Up to eight extra Aqua clusters
+adjacent to the wood ring add eight containers, one eye and eight range each.
+Empty-hand use removes the last actual eye; sneak-empty-hand use opens status.
+Changes invalidate immediately; no chunks are loaded. Vis readers under any
+pool water square or readers bound to the locus report actual totals and labeled
+per-aspect capacities, including empty labeled jars. A tally counts essentia
+units there, filtering with actual component-bearing host crystal samples.
+
+Craft the **Essentia Aggregator** with a real Aqua cluster and replace the
+central cluster directly below the locus. Its original model visibly embeds that
+cluster; all other construct resources remain required. It owns no essentia.
+Actual host storage, conduit, legacy transport and infusion-source capabilities
+delegate extraction to the original monitored jars. Blocked/braced sources and
+wrong output sides refuse extraction. Its zero suction/minimum threshold allows
+an actual downstream tube pull; host infusion and essentia mirrors use their real
+source discovery path. Reservoirs expose conduit/aspect source rather than a
+storage capability in host 1.0.4, so a small adapter delegates their real methods.
+
+These capacities, shapes, costs and rates are modern defaults wherever the
+public reference omits numbers. New fluid/research/menu visuals still need the
+parent's frozen-JAR client review; later feature families and full-pack acceptance
+remain pending.
+
+## Extending progression
+
+Register functional content and original assets first. Add recipe JSON under
+`data/autoturgy/recipe/`, using installed-host schemas: arcane shaped recipes
+carry `pattern`, `key`, `crystals`, `vis`, `research: {entry}` and `result`;
+infusion recipes carry `catalyst`, `components`, real `aspects`, `instability`,
+the same research gate and result. Component-aware primal crystal ingredients
+use `neoforge:components` with `thaumaturge:crystal_aspect`, never legacy shard IDs.
+Original research entries under `data/autoturgy/thaumaturge/research_entry/`
+belong to `autoturgy:automation`, have valid namespaced parents and normal host
+obtain/knowledge stages. Add the recipe IDs to the entry's final stage and the
+original translated title/text to the language file. Preserve the graph's
+reachability; do not make an ingredient require the machine it is used to craft.
+Do not add a parallel ordinary crafting recipe for a magically gated device.

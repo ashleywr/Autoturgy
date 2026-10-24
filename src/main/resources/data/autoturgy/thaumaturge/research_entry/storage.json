@@ -1,0 +1,54 @@
+{
+  "category": "autoturgy:automation",
+  "name": "research.autoturgy.storage.title",
+  "parents": [
+    "autoturgy:filters"
+  ],
+  "column": 0,
+  "row": 2,
+  "icons": [
+    "autoturgy:greedy_chest"
+  ],
+  "stages": [
+    {
+      "text": "research.autoturgy.storage.study",
+      "obtain": [
+        {
+          "items": [
+            "minecraft:paper"
+          ],
+          "amount": 1
+        }
+      ],
+      "required_knowledge": [
+        {
+          "type": "observation",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "text": "research.autoturgy.storage.complete",
+      "recipes": [
+        "autoturgy:eager_chest",
+        "autoturgy:finical_maw",
+        "autoturgy:greedy_chest",
+        "autoturgy:hungry_maw",
+        "autoturgy:mercatus_amalgam",
+        "autoturgy:tenacious_chest"
+      ]
+    }
+  ],
+  "note_aspects": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 2
+    }
+  ],
+  "complexity": 1
+}

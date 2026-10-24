@@ -1,20 +1,29 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    " V ",
-    "GMG",
-    " G "
-  ],
-  "key": {
-    "M": {
-      "item": "thaumaturge:mirror"
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "thaumaturge:hand_mirror"
+  },
+  "components": [
+    {
+      "item": "autoturgy:conflux_disc"
     },
-    "G": {
-      "item": "minecraft:gold_ingot"
-    },
-    "V": {
-      "item": "autoturgy:crystalline_eye"
+    {
+      "item": "autoturgy:runic_filter"
     }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:alienis",
+      "amount": 12
+    },
+    {
+      "aspect": "thaumaturge:vacuos",
+      "amount": 12
+    }
+  ],
+  "instability": 1,
+  "research": {
+    "entry": "autoturgy:mirrors"
   },
   "result": {
     "id": "autoturgy:hungry_hand_mirror",

@@ -1,0 +1,49 @@
+{
+  "category": "autoturgy:automation",
+  "name": "research.autoturgy.filters.title",
+  "parents": [
+    "autoturgy:foundations"
+  ],
+  "column": 6,
+  "row": 0,
+  "icons": [
+    "autoturgy:runic_filter"
+  ],
+  "stages": [
+    {
+      "text": "research.autoturgy.filters.study",
+      "obtain": [
+        {
+          "items": [
+            "minecraft:paper"
+          ],
+          "amount": 1
+        }
+      ],
+      "required_knowledge": [
+        {
+          "type": "observation",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "text": "research.autoturgy.filters.complete",
+      "recipes": [
+        "autoturgy:runic_filter"
+      ]
+    }
+  ],
+  "note_aspects": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 2
+    }
+  ],
+  "complexity": 1
+}

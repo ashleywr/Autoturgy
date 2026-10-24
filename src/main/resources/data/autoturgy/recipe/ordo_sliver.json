@@ -1,0 +1,31 @@
+{
+  "type": "thaumaturge:arcane_workbench_shaped",
+  "pattern": [
+    "C"
+  ],
+  "key": {
+    "C": {
+      "type": "neoforge:components",
+      "items": "thaumaturge:essentia_crystal",
+      "components": {
+        "thaumaturge:crystal_aspect": {
+          "aspect": "thaumaturge:ordo"
+        }
+      }
+    }
+  },
+  "crystals": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 1
+    }
+  ],
+  "vis": 1,
+  "research": {
+    "entry": "autoturgy:foundations"
+  },
+  "result": {
+    "id": "autoturgy:ordo_sliver",
+    "count": 4
+  }
+}

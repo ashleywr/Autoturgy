@@ -1,0 +1,56 @@
+{
+  "category": "autoturgy:automation",
+  "name": "research.autoturgy.inventarium.title",
+  "parents": [
+    "autoturgy:storage",
+    "autoturgy:sensing"
+  ],
+  "column": 2,
+  "row": 2,
+  "icons": [
+    "autoturgy:inventarium_core"
+  ],
+  "stages": [
+    {
+      "text": "research.autoturgy.inventarium.study",
+      "obtain": [
+        {
+          "items": [
+            "minecraft:paper"
+          ],
+          "amount": 1
+        }
+      ],
+      "required_knowledge": [
+        {
+          "type": "observation",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "text": "research.autoturgy.inventarium.complete",
+      "recipes": [
+        "autoturgy:enchanting_bookshelf",
+        "autoturgy:ensorcelled_bookshelf",
+        "autoturgy:inventarium_core",
+        "autoturgy:inventarium_memory",
+        "autoturgy:inventarium_oculus",
+        "autoturgy:inventarium_scribe",
+        "autoturgy:requisition_tome"
+      ]
+    }
+  ],
+  "note_aspects": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 2
+    }
+  ],
+  "complexity": 1
+}

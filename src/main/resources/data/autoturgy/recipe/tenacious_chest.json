@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "thaumaturge:arcane_workbench_shaped",
   "pattern": [
     "IOI",
     "ACA",
@@ -22,5 +22,19 @@
   "result": {
     "id": "autoturgy:tenacious_chest",
     "count": 1
+  },
+  "crystals": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 1
+    },
+    {
+      "aspect": "thaumaturge:aer",
+      "amount": 1
+    }
+  ],
+  "vis": 20,
+  "research": {
+    "entry": "autoturgy:storage"
   }
 }

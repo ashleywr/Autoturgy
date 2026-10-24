@@ -1,26 +1,39 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "GBG",
-    "VSV",
-    "GAG"
-  ],
-  "key": {
-    "G": {
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "minecraft:bookshelf"
+  },
+  "components": [
+    {
+      "item": "autoturgy:ordo_crystalline_brain"
+    },
+    {
+      "item": "autoturgy:bound_paper"
+    },
+    {
       "item": "minecraft:gold_ingot"
     },
-    "S": {
-      "item": "minecraft:bookshelf"
-    },
-    "V": {
-      "item": "autoturgy:crystalline_eye"
-    },
-    "B": {
-      "item": "minecraft:book"
-    },
-    "A": {
-      "item": "minecraft:amethyst_shard"
+    {
+      "item": "thaumaturge:amber_block"
     }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 12
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 12
+    }
+  ],
+  "instability": 1,
+  "research": {
+    "entry": "autoturgy:inventarium"
   },
   "result": {
     "id": "autoturgy:inventarium_core",

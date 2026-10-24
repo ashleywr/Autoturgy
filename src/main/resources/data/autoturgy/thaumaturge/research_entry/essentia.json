@@ -1,0 +1,52 @@
+{
+  "category": "autoturgy:automation",
+  "name": "research.autoturgy.essentia.title",
+  "parents": [
+    "autoturgy:sensing",
+    "thaumaturge:infusion"
+  ],
+  "column": 2,
+  "row": 4,
+  "icons": [
+    "autoturgy:essentia_locus"
+  ],
+  "stages": [
+    {
+      "text": "research.autoturgy.essentia.study",
+      "obtain": [
+        {
+          "items": [
+            "minecraft:paper"
+          ],
+          "amount": 1
+        }
+      ],
+      "required_knowledge": [
+        {
+          "type": "observation",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "text": "research.autoturgy.essentia.complete",
+      "recipes": [
+        "autoturgy:conflux_disc",
+        "autoturgy:essentia_aggregator",
+        "autoturgy:essentia_locus"
+      ]
+    }
+  ],
+  "note_aspects": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 2
+    }
+  ],
+  "complexity": 1
+}

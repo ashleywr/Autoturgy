@@ -1,0 +1,31 @@
+{
+  "type": "thaumaturge:arcane_workbench_shaped",
+  "pattern": [
+    "C"
+  ],
+  "key": {
+    "C": {
+      "type": "neoforge:components",
+      "items": "thaumaturge:essentia_crystal",
+      "components": {
+        "thaumaturge:crystal_aspect": {
+          "aspect": "thaumaturge:ignis"
+        }
+      }
+    }
+  },
+  "crystals": [
+    {
+      "aspect": "thaumaturge:ignis",
+      "amount": 1
+    }
+  ],
+  "vis": 1,
+  "research": {
+    "entry": "autoturgy:foundations"
+  },
+  "result": {
+    "id": "autoturgy:ignis_sliver",
+    "count": 4
+  }
+}

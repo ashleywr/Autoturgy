@@ -1,23 +1,29 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "BEB",
-    "AGA",
-    "BEB"
-  ],
-  "key": {
-    "B": {
-      "item": "minecraft:book"
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "autoturgy:bound_paper"
+  },
+  "components": [
+    {
+      "item": "autoturgy:ordo_crystalline_brain"
     },
-    "A": {
-      "item": "minecraft:amethyst_shard"
-    },
-    "G": {
-      "item": "minecraft:gold_ingot"
-    },
-    "E": {
+    {
       "item": "minecraft:ender_pearl"
     }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 8
+    },
+    {
+      "aspect": "thaumaturge:vinculum",
+      "amount": 8
+    }
+  ],
+  "instability": 1,
+  "research": {
+    "entry": "autoturgy:inventarium"
   },
   "result": {
     "id": "autoturgy:inventarium_memory",

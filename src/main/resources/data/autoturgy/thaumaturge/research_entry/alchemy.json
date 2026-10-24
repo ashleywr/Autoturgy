@@ -1,0 +1,51 @@
+{
+  "category": "autoturgy:automation",
+  "name": "research.autoturgy.alchemy.title",
+  "parents": [
+    "autoturgy:fluids",
+    "autoturgy:essentia"
+  ],
+  "column": 4,
+  "row": 4,
+  "icons": [
+    "autoturgy:alchemical_boiler"
+  ],
+  "stages": [
+    {
+      "text": "research.autoturgy.alchemy.study",
+      "obtain": [
+        {
+          "items": [
+            "minecraft:paper"
+          ],
+          "amount": 1
+        }
+      ],
+      "required_knowledge": [
+        {
+          "type": "observation",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "text": "research.autoturgy.alchemy.complete",
+      "recipes": [
+        "autoturgy:alchemical_boiler",
+        "autoturgy:ember_heart"
+      ]
+    }
+  ],
+  "note_aspects": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 2
+    }
+  ],
+  "complexity": 1
+}

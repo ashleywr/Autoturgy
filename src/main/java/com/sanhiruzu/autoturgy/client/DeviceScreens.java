@@ -27,7 +27,7 @@ public final class DeviceScreens {
     @Override
     protected void init() {
       super.init();
-      for (int i = 0; i < menu.controls; i++) {
+      for (int i = 0; i < menu.controls && !readOnly(); i++) {
         final int control = i;
         addRenderableWidget(
             Button.builder(Component.literal("−"), b -> send(control * 2))
@@ -52,6 +52,12 @@ public final class DeviceScreens {
 
     private void send(int id) {
       minecraft.gameMode.handleInventoryButtonClick(menu.containerId, id);
+    }
+
+    private boolean readOnly() {
+      return menu.kind.equals("thirsty_tank")
+          || menu.kind.equals("alchemical_boiler")
+          || menu.kind.equals("essentia_locus");
     }
 
     @Override
@@ -88,6 +94,8 @@ public final class DeviceScreens {
 
     private Component value(int i) {
       int value = menu.data.get(i + 2);
+      if (menu.kind.equals("thirsty_tank") && i < 6)
+        return Component.translatable("glyph.autoturgy." + value);
       if (menu.kind.equals("greedy_chest")) {
         if (i < 6) return onOff((menu.data.get(2) & 1 << i) != 0);
         return i == 6

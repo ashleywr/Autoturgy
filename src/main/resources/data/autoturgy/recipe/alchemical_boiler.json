@@ -1,0 +1,43 @@
+{
+  "type": "thaumaturge:arcane_workbench_shaped",
+  "pattern": [
+    "IAI",
+    "BHB",
+    "IEI"
+  ],
+  "key": {
+    "I": {
+      "item": "thaumaturge:ingot_thaumium"
+    },
+    "A": {
+      "item": "thaumaturge:alembic"
+    },
+    "B": {
+      "item": "minecraft:bucket"
+    },
+    "H": {
+      "item": "autoturgy:ember_heart"
+    },
+    "E": {
+      "item": "minecraft:furnace"
+    }
+  },
+  "crystals": [
+    {
+      "aspect": "thaumaturge:ignis",
+      "amount": 2
+    },
+    {
+      "aspect": "thaumaturge:aqua",
+      "amount": 2
+    }
+  ],
+  "vis": 50,
+  "research": {
+    "entry": "autoturgy:alchemy"
+  },
+  "result": {
+    "id": "autoturgy:alchemical_boiler",
+    "count": 1
+  }
+}

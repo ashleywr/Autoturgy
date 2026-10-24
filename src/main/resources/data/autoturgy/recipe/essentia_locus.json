@@ -1,0 +1,39 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "minecraft:lapis_lazuli"
+  },
+  "components": [
+    {
+      "item": "autoturgy:aqua_crystalline_brain"
+    },
+    {
+      "item": "autoturgy:crystalline_eye"
+    },
+    {
+      "item": "thaumaturge:ingot_thaumium"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:aqua",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:sensus",
+      "amount": 8
+    }
+  ],
+  "instability": 1,
+  "research": {
+    "entry": "autoturgy:essentia"
+  },
+  "result": {
+    "id": "autoturgy:essentia_locus",
+    "count": 1
+  }
+}

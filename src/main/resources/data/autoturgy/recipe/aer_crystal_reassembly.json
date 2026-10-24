@@ -1,0 +1,31 @@
+{
+  "type": "thaumaturge:arcane_workbench_shaped",
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "key": {
+    "S": {
+      "item": "autoturgy:aer_sliver"
+    }
+  },
+  "crystals": [
+    {
+      "aspect": "thaumaturge:aer",
+      "amount": 2
+    }
+  ],
+  "vis": 10,
+  "research": {
+    "entry": "autoturgy:foundations"
+  },
+  "result": {
+    "id": "thaumaturge:essentia_crystal",
+    "count": 1,
+    "components": {
+      "thaumaturge:crystal_aspect": {
+        "aspect": "thaumaturge:aer"
+      }
+    }
+  }
+}

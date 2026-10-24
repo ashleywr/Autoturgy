@@ -1,23 +1,36 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "AVA",
-    "GMG",
-    "AGA"
-  ],
-  "key": {
-    "V": {
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "thaumaturge:mirror"
+  },
+  "components": [
+    {
+      "item": "autoturgy:conflux_disc"
+    },
+    {
       "item": "autoturgy:crystalline_eye"
     },
-    "M": {
-      "item": "thaumaturge:mirror"
-    },
-    "A": {
-      "item": "minecraft:amethyst_shard"
-    },
-    "G": {
-      "item": "minecraft:gold_ingot"
+    {
+      "item": "thaumaturge:ingot_thaumium"
     }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:alienis",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:vacuos",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:permutatio",
+      "amount": 8
+    }
+  ],
+  "instability": 1,
+  "research": {
+    "entry": "autoturgy:mirrors"
   },
   "result": {
     "id": "autoturgy:melding_mirror",

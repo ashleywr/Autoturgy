@@ -686,6 +686,7 @@ public final class InventariumModule {
         InteractionHand hand,
         BlockHitResult hit) {
       if (level.getBlockEntity(pos) instanceof TomeEntity tome) {
+        if (stack.isEmpty()) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         if (stack.is(SensingModule.EYE.get())) {
           if (!level.isClientSide)
             LoadedTargets.Target.load(SensingModule.itemData(stack))

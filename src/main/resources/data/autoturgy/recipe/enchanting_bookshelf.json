@@ -1,5 +1,5 @@
 {
-  "type": "minecraft:crafting_shaped",
+  "type": "thaumaturge:arcane_workbench_shaped",
   "pattern": [
     "AGA",
     "BSB",
@@ -7,7 +7,7 @@
   ],
   "key": {
     "B": {
-      "item": "minecraft:book"
+      "item": "autoturgy:enchanted_paper"
     },
     "A": {
       "item": "minecraft:amethyst_shard"
@@ -22,5 +22,19 @@
   "result": {
     "id": "autoturgy:enchanting_bookshelf",
     "count": 1
+  },
+  "crystals": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 1
+    },
+    {
+      "aspect": "thaumaturge:aer",
+      "amount": 1
+    }
+  ],
+  "vis": 20,
+  "research": {
+    "entry": "autoturgy:inventarium"
   }
 }

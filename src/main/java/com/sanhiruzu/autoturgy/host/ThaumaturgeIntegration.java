@@ -42,6 +42,8 @@ public final class ThaumaturgeIntegration {
 
   public static Snapshot read(Level level, BlockPos pos, Direction side) {
     if (!level.hasChunkAt(pos)) return Snapshot.invalid();
+    Snapshot locus = com.sanhiruzu.autoturgy.essentia.EssentiaModule.reading(level, pos);
+    if (locus != null) return locus;
     BlockEntity be = level.getBlockEntity(pos);
     if (be instanceof BlockEntityNode node) {
       List<AspectReading> result = new ArrayList<>();

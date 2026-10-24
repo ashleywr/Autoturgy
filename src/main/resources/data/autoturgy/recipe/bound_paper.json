@@ -1,0 +1,30 @@
+{
+  "type": "thaumaturge:arcane_workbench_shaped",
+  "pattern": [
+    "PPP",
+    " S ",
+    "PPP"
+  ],
+  "key": {
+    "P": {
+      "item": "autoturgy:enchanted_paper"
+    },
+    "S": {
+      "item": "minecraft:string"
+    }
+  },
+  "crystals": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 1
+    }
+  ],
+  "vis": 8,
+  "research": {
+    "entry": "autoturgy:foundations"
+  },
+  "result": {
+    "id": "autoturgy:bound_paper",
+    "count": 2
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "type": "thaumaturge:arcane_workbench_shaped",
+  "pattern": [
+    "IGI",
+    "ABA",
+    "IGI"
+  ],
+  "key": {
+    "I": {
+      "item": "thaumaturge:ingot_thaumium"
+    },
+    "G": {
+      "item": "minecraft:glass"
+    },
+    "A": {
+      "item": "autoturgy:aqua_sliver"
+    },
+    "B": {
+      "item": "minecraft:bucket"
+    }
+  },
+  "crystals": [
+    {
+      "aspect": "thaumaturge:aqua",
+      "amount": 2
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 1
+    }
+  ],
+  "vis": 30,
+  "research": {
+    "entry": "autoturgy:fluids"
+  },
+  "result": {
+    "id": "autoturgy:thirsty_tank",
+    "count": 1
+  }
+}

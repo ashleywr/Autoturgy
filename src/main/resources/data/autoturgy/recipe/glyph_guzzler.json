@@ -1,0 +1,37 @@
+{
+  "type": "thaumaturge:arcane_workbench_shaped",
+  "pattern": [
+    " A ",
+    "SMS",
+    " S "
+  ],
+  "key": {
+    "A": {
+      "item": "autoturgy:aqueous_admixture"
+    },
+    "S": {
+      "item": "minecraft:stone"
+    },
+    "M": {
+      "item": "minecraft:sugar"
+    }
+  },
+  "crystals": [
+    {
+      "aspect": "thaumaturge:aqua",
+      "amount": 1
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 1
+    }
+  ],
+  "vis": 12,
+  "research": {
+    "entry": "autoturgy:glyphs"
+  },
+  "result": {
+    "id": "autoturgy:glyph_guzzler",
+    "count": 1
+  }
+}

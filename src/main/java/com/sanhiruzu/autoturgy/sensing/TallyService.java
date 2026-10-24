@@ -39,6 +39,13 @@ public final class TallyService {
         || !LoadedTargets.local(level, origin, target, 20)
         || !visited.add(target.pos())) return 0;
     BlockPos pos = target.pos();
+    var locus = com.sanhiruzu.autoturgy.essentia.EssentiaModule.at(level, pos);
+    if (lens == 0 && locus != null) {
+      long total = 0;
+      for (var aspect : locus.contents().entries())
+        if (StackFilters.accepts(filter, com.leclowndu93150.thaumaturge.api.essentia.EssentiaCrystalAccess.create(aspect.aspect(), 1))) total += aspect.amount();
+      return total;
+    }
     if (lens == 1)
       return level
           .getEntitiesOfClass(ItemEntity.class, new AABB(pos).inflate(2), e -> e.isAlive())

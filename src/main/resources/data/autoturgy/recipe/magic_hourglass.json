@@ -1,27 +1,32 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "category": "misc",
-  "pattern": [
-    "AEA",
-    "QHQ",
-    "ARA"
-  ],
-  "key": {
-    "A": {
-      "item": "minecraft:amethyst_shard"
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "autoturgy:hourglass"
+  },
+  "components": [
+    {
+      "item": "autoturgy:ordo_crystalline_brain"
     },
-    "E": {
-      "item": "minecraft:ender_pearl"
-    },
-    "H": {
-      "item": "autoturgy:hourglass"
-    },
-    "Q": {
+    {
       "item": "minecraft:quartz"
     },
-    "R": {
-      "item": "minecraft:redstone"
+    {
+      "item": "autoturgy:perditio_sliver"
     }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 8
+    },
+    {
+      "aspect": "thaumaturge:motus",
+      "amount": 8
+    }
+  ],
+  "instability": 1,
+  "research": {
+    "entry": "autoturgy:signals"
   },
   "result": {
     "id": "autoturgy:magic_hourglass",

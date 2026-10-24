@@ -20,6 +20,9 @@ public final class Autoturgy {
     com.sanhiruzu.autoturgy.storage.StorageModule.register(bus);
     com.sanhiruzu.autoturgy.inventarium.InventariumModule.register(bus);
     com.sanhiruzu.autoturgy.transport.MirrorModule.register(bus);
+    com.sanhiruzu.autoturgy.fluids.FluidModule.register(bus);
+    com.sanhiruzu.autoturgy.essentia.EssentiaModule.register(bus);
+    com.sanhiruzu.autoturgy.progression.ProgressionModule.register(bus);
     ControlMenu.register();
     Content.register(bus);
   }

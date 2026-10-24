@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "autoturgy:block/essentia_locus",
+      "y": 0
+    },
+    "facing=east": {
+      "model": "autoturgy:block/essentia_locus",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "autoturgy:block/essentia_locus",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "autoturgy:block/essentia_locus",
+      "y": 270
+    }
+  }
+}

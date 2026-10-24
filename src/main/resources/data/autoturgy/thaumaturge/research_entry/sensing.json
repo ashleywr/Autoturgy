@@ -1,0 +1,56 @@
+{
+  "category": "autoturgy:automation",
+  "name": "research.autoturgy.sensing.title",
+  "parents": [
+    "autoturgy:foundations"
+  ],
+  "column": 4,
+  "row": 0,
+  "icons": [
+    "autoturgy:crystalline_eye"
+  ],
+  "stages": [
+    {
+      "text": "research.autoturgy.sensing.study",
+      "obtain": [
+        {
+          "items": [
+            "minecraft:paper"
+          ],
+          "amount": 1
+        }
+      ],
+      "required_knowledge": [
+        {
+          "type": "observation",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "text": "research.autoturgy.sensing.complete",
+      "recipes": [
+        "autoturgy:crystalline_eye",
+        "autoturgy:entity_eye",
+        "autoturgy:remote_comparator",
+        "autoturgy:signum_entia",
+        "autoturgy:tally_box",
+        "autoturgy:unbound_lens",
+        "autoturgy:vis_reader",
+        "autoturgy:yield_lens"
+      ]
+    }
+  ],
+  "note_aspects": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 2
+    }
+  ],
+  "complexity": 1
+}

@@ -1,26 +1,36 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "pattern": [
-    "BVB",
-    "GMG",
-    "BEB"
-  ],
-  "key": {
-    "G": {
-      "item": "minecraft:gold_ingot"
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "autoturgy:melding_mirror"
+  },
+  "components": [
+    {
+      "item": "autoturgy:conflux_disc"
     },
-    "E": {
-      "item": "minecraft:ender_pearl"
+    {
+      "item": "autoturgy:ordo_crystalline_brain"
     },
-    "M": {
-      "item": "thaumaturge:mirror"
-    },
-    "V": {
-      "item": "autoturgy:crystalline_eye"
-    },
-    "B": {
-      "item": "minecraft:book"
+    {
+      "item": "autoturgy:bound_paper"
     }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:alienis",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:motus",
+      "amount": 16
+    }
+  ],
+  "instability": 1,
+  "research": {
+    "entry": "autoturgy:mirrors"
   },
   "result": {
     "id": "autoturgy:dispersing_mirror",
