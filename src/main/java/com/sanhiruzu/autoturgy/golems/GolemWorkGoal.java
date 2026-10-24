@@ -12,7 +12,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.ai.goal.Goal;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.items.*;
 
@@ -249,7 +248,7 @@ public final class GolemWorkGoal extends Goal {
       return true;
     }
     if (golem.tickCount % 5 == 0 || golem.getNavigation().isDone()) {
-      Vec3 best = pos.getCenter();
+      net.minecraft.world.level.pathfinder.Path best = null;
       double distance = Double.MAX_VALUE;
       for (Direction d : Direction.Plane.HORIZONTAL) {
         BlockPos p = pos.relative(d);
@@ -260,14 +259,16 @@ public final class GolemWorkGoal extends Goal {
                 .getBlockState(p.above())
                 .getCollisionShape(golem.level(), p.above())
                 .isEmpty()) {
+          var path = golem.getNavigation().createPath(p, 0);
           double next = golem.distanceToSqr(p.getCenter());
-          if (next < distance) {
+          if (path != null && path.canReach() && next < distance) {
             distance = next;
-            best = Vec3.atBottomCenterOf(p);
+            best = path;
           }
         }
       }
-      golem.getNavigation().moveTo(best.x, best.y, best.z, golem.getGolemMoveSpeed());
+      // Accuracy zero reaches the standing node instead of stopping one node before it.
+      if (best != null) golem.getNavigation().moveTo(best, golem.getGolemMoveSpeed());
     }
     return false;
   }

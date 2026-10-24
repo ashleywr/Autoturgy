@@ -1,0 +1,32 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "minecraft:obsidian"
+  },
+  "components": [
+    {
+      "item": "autoturgy:ignis_sliver"
+    },
+    {
+      "item": "minecraft:quartz"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:ignis",
+      "amount": 8
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:nethermind"
+  },
+  "result": {
+    "id": "autoturgy:runed_obsidian",
+    "count": 4
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "autoturgy:runed_obsidian"
+  },
+  "components": [
+    {
+      "item": "minecraft:quartz"
+    },
+    {
+      "item": "autoturgy:enchanted_paper"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:vitreus",
+      "amount": 12
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:nethermind"
+  },
+  "result": {
+    "id": "autoturgy:rune_crystal",
+    "count": 1
+  }
+}

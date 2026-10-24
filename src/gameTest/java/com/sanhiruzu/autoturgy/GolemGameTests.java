@@ -97,8 +97,13 @@ public final class GolemGameTests {
   static Delivery delivery(GameTestHelper h, int workers, int stock) {
     floor(h);
     var core = LogisticsGameTests.structure(h);
-    TomeGameTests.power(h);
+    var power = TomeGameTests.power(h);
+    power.serverTick(h.getLevel(), power.getBlockPos());
+    TomeGameTests.relay(h);
     h.setBlock(new BlockPos(8, 4, 6), LogisticsGameTests.host("vis_relay"));
+    ((com.leclowndu93150.thaumaturge.content.aura.relay.BlockEntityVisRelay)
+            h.getBlockEntity(new BlockPos(8, 4, 6)))
+        .refreshLink(h.getLevel());
     h.setBlock(TASK, GolemModule.TASKMASTER.get());
     GolemModule.LinkEntity task = h.getBlockEntity(TASK);
     task.target = LogisticsGameTests.target(h, LogisticsGameTests.A);
@@ -141,6 +146,37 @@ public final class GolemGameTests {
     h.assertTrue(f.tome.operational(), "actual Ordo relay pays tome");
     h.assertTrue(f.task.core() == f.core, "taskmaster claims separate real memory");
     f.core.refresh();
+    if (f.core.index.count(new ItemStack(Items.STONE)) == 0) {
+      var source = h.getBlockEntity(SOURCE);
+      InventariumModule.ScribeEntity scribe = h.getBlockEntity(SOURCE.west());
+      var relay =
+          (com.leclowndu93150.thaumaturge.content.aura.relay.BlockEntityVisRelay)
+              h.getBlockEntity(new BlockPos(8, 4, 6));
+      var node =
+          (com.leclowndu93150.thaumaturge.content.aura.node.BlockEntityNode)
+              h.getBlockEntity(LogisticsGameTests.A.above(3));
+      System.out.println(
+          "AUTOTURGY_SCRIBE_PRECONDITION time="
+              + h.getLevel().getGameTime()
+              + " structure="
+              + f.core.structure
+              + " source="
+              + f.source.getItem(0)
+              + " scribeType="
+              + scribe.inventoryType
+              + " rawCandidates="
+              + scribe.candidates()
+              + " relayLinked="
+              + relay.isLinked()
+              + " relaySource="
+              + relay.resolveSource(h.getLevel())
+              + " nodeEnergized="
+              + node.isEnergized()
+              + " nodeOrdo="
+              + node.availableCentivis(
+                  com.leclowndu93150.thaumaturge.api.aspect.Aspects.resolve(
+                      h.getLevel(), com.leclowndu93150.thaumaturge.api.aspect.TTAspects.ORDO)));
+    }
     h.assertTrue(
         f.core.index.count(new ItemStack(Items.STONE)) > 0,
         "real paid scribe indexes physical stock");

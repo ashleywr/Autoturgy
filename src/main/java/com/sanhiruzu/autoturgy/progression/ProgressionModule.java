@@ -39,7 +39,7 @@ public final class ProgressionModule {
             "conflux_disc",
             "mercatus_amalgam",
             "ember_heart")) ingredient(name);
-    for (int i = 17; i <= 26; i++) GuideItem.PAGES.add("guide.autoturgy." + i);
+    for (int i = 17; i <= 34; i++) GuideItem.PAGES.add("guide.autoturgy." + i);
   }
 
   private static void ingredient(String name) {

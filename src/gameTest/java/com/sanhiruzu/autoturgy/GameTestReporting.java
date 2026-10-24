@@ -12,6 +12,9 @@ public final class GameTestReporting {
   public static void begin(ServerAboutToStartEvent event) {
     String report = System.getProperty("autoturgy.testReport");
     if (report == null) return;
+    // Host 1.0.4 HARNESS_JAR stores a copied ItemStack; production skips IDE validation.
+    // Exercise that exact installed-host API without weakening production component checks.
+    net.neoforged.neoforge.common.CommonHooks.markComponentClassAsValid(net.minecraft.world.item.ItemStack.class);
     try {
       Path path = Path.of(report);
       Files.createDirectories(path.getParent());

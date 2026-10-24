@@ -1,0 +1,39 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "thaumaturge:obsidian_totem"
+  },
+  "components": [
+    {
+      "item": "autoturgy:ordo_crystalline_brain"
+    },
+    {
+      "item": "minecraft:note_block"
+    },
+    {
+      "item": "autoturgy:enchanted_paper"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:desiderium",
+      "amount": 24
+    },
+    {
+      "aspect": "thaumaturge:potentia",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:sensus",
+      "amount": 16
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:sirens"
+  },
+  "result": {
+    "id": "autoturgy:sirens_lure",
+    "count": 1
+  }
+}

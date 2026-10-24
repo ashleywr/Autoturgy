@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/cube_all",
+  "textures": {
+    "all": "autoturgy:block/rune_wither_skeleton"
+  }
+}

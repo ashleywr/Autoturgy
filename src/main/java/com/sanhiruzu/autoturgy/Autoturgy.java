@@ -23,6 +23,9 @@ public final class Autoturgy {
     com.sanhiruzu.autoturgy.fluids.FluidModule.register(bus);
     com.sanhiruzu.autoturgy.essentia.EssentiaModule.register(bus);
     com.sanhiruzu.autoturgy.golems.GolemModule.register(bus);
+    com.sanhiruzu.autoturgy.constructs.SpireModule.register(bus);
+    com.sanhiruzu.autoturgy.constructs.NethermindModule.register(bus);
+    com.sanhiruzu.autoturgy.constructs.SirensLure.register(bus);
     com.sanhiruzu.autoturgy.progression.ProgressionModule.register(bus);
     ControlMenu.register();
     Content.register(bus);

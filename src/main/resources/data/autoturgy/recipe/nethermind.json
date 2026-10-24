@@ -1,0 +1,39 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "autoturgy:runed_obsidian"
+  },
+  "components": [
+    {
+      "item": "autoturgy:ignis_crystalline_brain"
+    },
+    {
+      "item": "autoturgy:ember_heart"
+    },
+    {
+      "item": "thaumaturge:ingot_thaumium"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:ignis",
+      "amount": 32
+    },
+    {
+      "aspect": "thaumaturge:alienis",
+      "amount": 24
+    },
+    {
+      "aspect": "thaumaturge:terra",
+      "amount": 16
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:nethermind"
+  },
+  "result": {
+    "id": "autoturgy:nethermind",
+    "count": 1
+  }
+}

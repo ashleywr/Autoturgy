@@ -1,0 +1,32 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "minecraft:quartz_pillar"
+  },
+  "components": [
+    {
+      "item": "thaumaturge:ingot_thaumium"
+    },
+    {
+      "item": "autoturgy:aer_sliver"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:aer",
+      "amount": 8
+    },
+    {
+      "aspect": "thaumaturge:potentia",
+      "amount": 8
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:spires"
+  },
+  "result": {
+    "id": "autoturgy:thaumostatic_pylon",
+    "count": 2
+  }
+}

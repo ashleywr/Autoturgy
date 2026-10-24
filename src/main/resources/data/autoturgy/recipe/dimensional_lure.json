@@ -1,0 +1,39 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "autoturgy:runed_obsidian"
+  },
+  "components": [
+    {
+      "item": "autoturgy:perditio_crystalline_brain"
+    },
+    {
+      "item": "autoturgy:conflux_disc"
+    },
+    {
+      "item": "minecraft:ender_pearl"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:alienis",
+      "amount": 32
+    },
+    {
+      "aspect": "thaumaturge:bestia",
+      "amount": 24
+    },
+    {
+      "aspect": "thaumaturge:potentia",
+      "amount": 16
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:dimensional_lures"
+  },
+  "result": {
+    "id": "autoturgy:dimensional_lure",
+    "count": 1
+  }
+}

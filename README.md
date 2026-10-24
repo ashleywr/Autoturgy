@@ -20,11 +20,12 @@ Autoturgy is an original unofficial recreation; no original code or assets are r
 - Thirsty tank, nine physical face glyphs, milk and two soup fluids.
 - Fueled alchemical boiler, real host alembics, validated essentia locus and aggregator.
 - Golem linking bell, reversible inhibitor, physical-delivery taskmaster and golem workbench.
+- Paid Thaumostatic Spires, weighted Netherminds, dimensional creature lures and Siren navigation.
 - Original textures, models, host research/magical recipes and searchable field notes.
 
 All listed devices perform their described function. Real host golems walk,
 collect actual indexed items, carry them in host hands and deliver through
-validated reservations. Constructs, experience and portable equipment remain
+validated reservations. Experience and portable equipment remain
 subsequent phases; this preview does not claim complete feature parity.
 
 ## Using the workshop
@@ -365,3 +366,70 @@ obtain/knowledge stages. Add the recipe IDs to the entry's final stage and the
 original translated title/text to the language file. Preserve the graph's
 reachability; do not make an ingredient require the machine it is used to craft.
 Do not add a parallel ordinary crafting recipe for a magically gated device.
+
+
+## Paid constructs and lures
+
+The field notes now contain original structure diagrams, port mappings and every
+cost. These are balanced modern constants where public historical descriptions
+lack values; no recovered exact percentages or costs are claimed. Complete the
+actual host research and use a charged host wand to start. Empty-hand/menu Start
+cannot bypass research or payment. Use a jar on a configured face to feed up to8
+real essentia; sneak-use to recover8. Host tubes respect output/brace permissions.
+Buffers hold64/aspect,256 total, and remain in the dropped inactive controller.
+
+Spire: chiseled quartz bottom, two to six pylons plus one controller in any order,
+actual host thaumium cap, air and sky. Start costs100 Aer centivis. Horizontal
+radius8+2/pylon has unlimited vertical extent;1 Aer essentia per successful batch
+adds8 radius and1 Volatus doubles the pylon-count transfer rate. Every delivered
+Potentia costs1 actual owned Potentia plus1 Aer relay centivis. The updated actual
+jar is installed in the equipped host harness. Player processing rotates a bounded
+64-player budget. Unsuitable/full harnesses and unpaid transfers consume nothing.
+
+Nethermind: center of a5x5 runed-obsidian/rune platform,500 Ignis wand centivis to
+start. Legal loaded targets lie in a9x9x9 volume starting two below the center.
+Rock/Sea/Crystal/Light/Soul/Pebble yield netherrack/lava/quartz ore/glowstone/soul
+sand/gravel. Pebble gravel is an explicit modern adaptation. Base weights4 Rock
+and1 Sea gain4 per matching rune. Four TOTAL type runes exclude absent types;
+matching discounts apply once. Material costs: Terra2 Rock/Pebble; Ignis4 Sea;
+Vitreus4 Crystal; Lux4 Light; Spiritus4 Soul, discounted1 with a matching rune.
+Each operation adds Ignis1 essentia and5 Ignis relay centivis. Celerity caps at12,
+reduces interval200 by15/rune to20 ticks, and its first four multiply all
+per-operation costs by1+count (max5). Blocks/fluids/containers/entities are safe.
+
+Dimensional Lure: at least four total creature runes, never mixed with block
+runes. Lower center6–10 below the Nethermind,8–10 with Ghasts; clear center line,
+5x5 perimeter of BASIC Runed Obsidian below. Start LOWER first (200 Perditio
+wand centivis), then upper. Actual vanilla piglin analogue/blaze/ghast/wither
+skeleton/magma cube and host Firebat/Ignis Wisp use rune-count weights. Upper
+cost Ignis2 plus3 creature aspect; lower Alienis2+Potentia1. Creature aspects:
+Exanimis piglin/skeleton; Ignis blaze; Volatus ghast; Bestia cube/bat; Auram wisp.
+Both ends additionally pay5 relay centivis (upper Ignis/lower Perditio), with the
+same Celerity multiplier. Space/liquid/height/peaceful/16-local-mob gates precede
+payment. Blaze extra chance1/8 adds at most one real blaze and8 instability.
+At instability20+, piglin anger chance1/4 lasts200 ticks. Four corner totem
+pillars(+/-3,+/-3) contribute up to4 each; equal nonzero heights add4 stability.
+Nitor atop pillars/below cardinal upper arms adds2 each. Instability gain is
+max(0,4+2*Celerity-stability), decays1/second, and stops both ends at80.
+
+Siren: vertical line of two actual host obsidian totems, counted up to16 above
+and16 below, extending4 blocks beyond the column. Start costs100 Ordo centivis.
+An eligible winning attraction second costs1 actual Potentia for radius12;
+1 additional Desiderium extends to24. Installed host has no Fames: Desiderium is
+the explicit modern mapping. Empty periods have no upkeep. Strongest column
+wins, then radius/coordinates. Ordinary navigation excludes bosses/golems/slimes,
+combat, leashed mobs and seated pets. Blocked100-tick, arrived40-tick or200-tick
+attraction gives600 ticks per-lure resistance. Endermen can safely step at most4
+blocks nearer through the ordinary ender-teleport event. Disable/unload releases
+movement without rewriting targets, home or AI.
+
+Shared golem reach measures two physical surfaces, within2 blocks and a clear
+loaded interaction line. Actual reachable adjacent paths use accuracy0 to avoid
+stopping a node short. The observed client carried-save position is replayed with
+real host hands and save/load. Final saved-world client acceptance is separate.
+
+Automated construct checks use the actual installed host. Its1.0.4 HARNESS_JAR
+stores a copied ItemStack, violating NeoForge IDE-only component validation; the
+test source set narrowly admits that host class. No production suppression or
+host modification is included. Actual release-client harness, rendered
+structures, research/menus and final pack acceptance remain pending.

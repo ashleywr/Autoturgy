@@ -1,0 +1,39 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "thaumaturge:ingot_thaumium"
+  },
+  "components": [
+    {
+      "item": "autoturgy:aer_crystalline_brain"
+    },
+    {
+      "item": "autoturgy:conflux_disc"
+    },
+    {
+      "item": "minecraft:quartz_block"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:aer",
+      "amount": 24
+    },
+    {
+      "aspect": "thaumaturge:potentia",
+      "amount": 24
+    },
+    {
+      "aspect": "thaumaturge:volatus",
+      "amount": 16
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:spires"
+  },
+  "result": {
+    "id": "autoturgy:thaumostatic_spire",
+    "count": 1
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "autoturgy:runed_obsidian"
+  },
+  "components": [
+    {
+      "item": "minecraft:gravel"
+    },
+    {
+      "item": "autoturgy:enchanted_paper"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:terra",
+      "amount": 12
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:nethermind"
+  },
+  "result": {
+    "id": "autoturgy:rune_pebble",
+    "count": 1
+  }
+}

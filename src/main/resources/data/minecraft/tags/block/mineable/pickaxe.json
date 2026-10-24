@@ -31,6 +31,26 @@
     "autoturgy:thirsty_tank",
     "autoturgy:alchemical_boiler",
     "autoturgy:essentia_locus",
-    "autoturgy:essentia_aggregator"
+    "autoturgy:essentia_aggregator",
+    "autoturgy:thaumostatic_spire",
+    "autoturgy:thaumostatic_pylon",
+    "autoturgy:runed_obsidian",
+    "autoturgy:nethermind",
+    "autoturgy:dimensional_lure",
+    "autoturgy:sirens_lure",
+    "autoturgy:rune_rock",
+    "autoturgy:rune_sea",
+    "autoturgy:rune_crystal",
+    "autoturgy:rune_light",
+    "autoturgy:rune_soul",
+    "autoturgy:rune_pebble",
+    "autoturgy:rune_celerity",
+    "autoturgy:rune_piglin",
+    "autoturgy:rune_blaze",
+    "autoturgy:rune_ghast",
+    "autoturgy:rune_wither_skeleton",
+    "autoturgy:rune_magma_cube",
+    "autoturgy:rune_firebat",
+    "autoturgy:rune_wisp"
   ]
 }

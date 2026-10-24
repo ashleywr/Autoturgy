@@ -52,7 +52,7 @@ public final class ProgressionGameTests {
         for (var parent : entry.getValue().parents())
           h.assertTrue(registry.containsKey(parent.id()), "all parent references resolve");
       }
-    h.assertValueEqual(count, 15, "all original research entries loaded");
+    h.assertValueEqual(count, 19, "all original research entries loaded");
     for (String name :
         new String[] {
           "redcrystal",

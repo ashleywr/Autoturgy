@@ -1,0 +1,56 @@
+{
+  "category": "autoturgy:automation",
+  "name": "research.autoturgy.dimensional_lures.title",
+  "parents": [
+    "autoturgy:nethermind"
+  ],
+  "column": 7,
+  "row": 3,
+  "icons": [
+    "autoturgy:dimensional_lure"
+  ],
+  "stages": [
+    {
+      "text": "research.autoturgy.dimensional_lures.study",
+      "obtain": [
+        {
+          "items": [
+            "minecraft:paper"
+          ],
+          "amount": 1
+        }
+      ],
+      "required_knowledge": [
+        {
+          "type": "observation",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "text": "research.autoturgy.dimensional_lures.complete",
+      "recipes": [
+        "autoturgy:dimensional_lure",
+        "autoturgy:rune_piglin",
+        "autoturgy:rune_blaze",
+        "autoturgy:rune_ghast",
+        "autoturgy:rune_wither_skeleton",
+        "autoturgy:rune_magma_cube",
+        "autoturgy:rune_firebat",
+        "autoturgy:rune_wisp"
+      ]
+    }
+  ],
+  "note_aspects": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:ignis",
+      "amount": 4
+    }
+  ],
+  "complexity": 2
+}

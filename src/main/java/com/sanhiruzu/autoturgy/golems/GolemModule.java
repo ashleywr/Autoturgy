@@ -249,10 +249,32 @@ public final class GolemModule {
   }
 
   public static boolean withinWorkReach(EntityThaumaturgeGolem golem, BlockPos pos) {
-    double dx = Math.max(Math.max(pos.getX() - golem.getX(), 0), golem.getX() - pos.getX() - 1);
-    double dy = Math.max(Math.max(pos.getY() - golem.getY(), 0), golem.getY() - pos.getY() - 1);
-    double dz = Math.max(Math.max(pos.getZ() - golem.getZ(), 0), golem.getZ() - pos.getZ() - 1);
-    return dx * dx + dy * dy + dz * dz <= 4;
+    if (!golem.level().hasChunkAt(pos)) return false;
+    var body = golem.getBoundingBox();
+    double dx = Math.max(Math.max(pos.getX() - body.maxX, 0), body.minX - pos.getX() - 1);
+    double dy = Math.max(Math.max(pos.getY() - body.maxY, 0), body.minY - pos.getY() - 1);
+    double dz = Math.max(Math.max(pos.getZ() - body.maxZ, 0), body.minZ - pos.getZ() - 1);
+    if (dx * dx + dy * dy + dz * dz > 4) return false;
+    var eye = golem.getEyePosition();
+    int minX = (int) Math.floor(Math.min(eye.x, pos.getX() + .5)) >> 4;
+    int maxX = (int) Math.floor(Math.max(eye.x, pos.getX() + .5)) >> 4;
+    int minZ = (int) Math.floor(Math.min(eye.z, pos.getZ() + .5)) >> 4;
+    int maxZ = (int) Math.floor(Math.max(eye.z, pos.getZ() + .5)) >> 4;
+    for (int x = minX; x <= maxX; x++)
+      for (int z = minZ; z <= maxZ; z++)
+        if (!golem.level().hasChunkAt(new BlockPos(x << 4, pos.getY(), z << 4))) return false;
+    var hit =
+        golem
+            .level()
+            .clip(
+                new net.minecraft.world.level.ClipContext(
+                    golem.getEyePosition(),
+                    pos.getCenter(),
+                    net.minecraft.world.level.ClipContext.Block.COLLIDER,
+                    net.minecraft.world.level.ClipContext.Fluid.NONE,
+                    golem));
+    return hit.getType() == net.minecraft.world.phys.HitResult.Type.MISS
+        || hit.getBlockPos().equals(pos);
   }
 
   private static final class PauseGoal extends Goal {

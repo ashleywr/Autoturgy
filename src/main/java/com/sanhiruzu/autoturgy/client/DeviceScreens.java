@@ -43,6 +43,11 @@ public final class DeviceScreens {
             Button.builder(Component.translatable("menu.autoturgy.start"), b -> send(80))
                 .bounds(leftPos + 16, topPos + 201, 130, 20)
                 .build());
+      if (construct())
+        addRenderableWidget(
+            Button.builder(Component.translatable("menu.autoturgy.cancel"), b -> send(81))
+                .bounds(leftPos + 160, topPos + 201, 130, 20)
+                .build());
       if (menu.kind.contains("hourglass"))
         addRenderableWidget(
             Button.builder(Component.translatable("menu.autoturgy.cancel"), b -> send(81))
@@ -60,6 +65,11 @@ public final class DeviceScreens {
           || menu.kind.equals("essentia_locus");
     }
 
+    private boolean construct() {
+      return java.util.Set.of("thaumostatic_spire", "nethermind", "dimensional_lure", "sirens_lure")
+          .contains(menu.kind);
+    }
+
     @Override
     protected void renderBg(GuiGraphics g, float partial, int mouseX, int mouseY) {
       panel(g, leftPos, topPos, imageWidth, imageHeight);
@@ -70,7 +80,13 @@ public final class DeviceScreens {
       g.drawString(font, title, 12, 12, 0xFFF1D89C, false);
       g.drawString(
           font,
-          Component.translatable("menu.autoturgy.status", menu.data.get(0), menu.data.get(1)),
+          construct()
+              ? Component.translatable(
+                  "menu.autoturgy.construct_status",
+                  menu.data.get(8) == 1 ? "Active" : "Stopped",
+                  menu.data.get(9),
+                  menu.data.get(10))
+              : Component.translatable("menu.autoturgy.status", menu.data.get(0), menu.data.get(1)),
           16,
           35,
           0xFFC8E7DC,
@@ -90,10 +106,53 @@ public final class DeviceScreens {
       if (menu.controls == 0)
         g.drawWordWrap(
             font, Component.translatable("menu.autoturgy.reader_hint"), 16, 66, 278, 0xFFDDE8E3);
+      if (construct()) {
+        String key =
+            menu.kind.equals("nethermind")
+                ? "nether"
+                : menu.kind.equals("dimensional_lure") ? "stability" : "radius";
+        g.drawString(
+            font,
+            Component.translatable(
+                "menu.autoturgy.construct_" + key, menu.data.get(11), menu.data.get(12)),
+            12,
+            159,
+            0xFFC8E7DC,
+            false);
+        g.drawWordWrap(
+            font,
+            Component.translatable("menu.autoturgy.construct_hint"),
+            12,
+            177,
+            282,
+            0xFFDDE8E3);
+      }
     }
 
     private Component value(int i) {
       int value = menu.data.get(i + 2);
+      if (construct()) {
+        java.util.List<String> names =
+            switch (menu.kind) {
+              case "thaumostatic_spire" -> java.util.List.of("Potentia", "Aer", "Volatus");
+              case "nethermind" ->
+                  java.util.List.of(
+                      "Ignis",
+                      "Terra",
+                      "Vitreus",
+                      "Lux",
+                      "Spiritus",
+                      "Bestia",
+                      "Exanimis",
+                      "Volatus",
+                      "Auram");
+              case "dimensional_lure" -> java.util.List.of("Alienis", "Potentia");
+              default -> java.util.List.of("Potentia", "Desiderium");
+            };
+        return value > 0 && value <= names.size()
+            ? Component.literal(names.get(value - 1))
+            : Component.translatable("menu.autoturgy.closed");
+      }
       if (menu.kind.equals("thirsty_tank") && i < 6)
         return Component.translatable("glyph.autoturgy." + value);
       if (menu.kind.equals("greedy_chest")) {

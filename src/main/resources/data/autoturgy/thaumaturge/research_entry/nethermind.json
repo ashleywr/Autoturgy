@@ -1,0 +1,57 @@
+{
+  "category": "autoturgy:automation",
+  "name": "research.autoturgy.nethermind.title",
+  "parents": [
+    "autoturgy:alchemy"
+  ],
+  "column": 6,
+  "row": 3,
+  "icons": [
+    "autoturgy:nethermind"
+  ],
+  "stages": [
+    {
+      "text": "research.autoturgy.nethermind.study",
+      "obtain": [
+        {
+          "items": [
+            "minecraft:paper"
+          ],
+          "amount": 1
+        }
+      ],
+      "required_knowledge": [
+        {
+          "type": "observation",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "text": "research.autoturgy.nethermind.complete",
+      "recipes": [
+        "autoturgy:runed_obsidian",
+        "autoturgy:nethermind",
+        "autoturgy:rune_rock",
+        "autoturgy:rune_sea",
+        "autoturgy:rune_crystal",
+        "autoturgy:rune_light",
+        "autoturgy:rune_soul",
+        "autoturgy:rune_pebble",
+        "autoturgy:rune_celerity"
+      ]
+    }
+  ],
+  "note_aspects": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:ignis",
+      "amount": 4
+    }
+  ],
+  "complexity": 2
+}

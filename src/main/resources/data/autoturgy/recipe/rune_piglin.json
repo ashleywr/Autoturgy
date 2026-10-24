@@ -1,0 +1,32 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "autoturgy:runed_obsidian"
+  },
+  "components": [
+    {
+      "item": "minecraft:rotten_flesh"
+    },
+    {
+      "item": "autoturgy:enchanted_paper"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:exanimis",
+      "amount": 12
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:dimensional_lures"
+  },
+  "result": {
+    "id": "autoturgy:rune_piglin",
+    "count": 1
+  }
+}
