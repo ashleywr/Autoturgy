@@ -38,7 +38,7 @@ public final class CraftingFocus {
 
   public static void register(IEventBus bus) {
     FocusUpgradeRecipe.register();
-    FOCUS = Content.item("crafting_focus", () -> new FocusItem(new Item.Properties().stacksTo(1)));
+    FOCUS = Content.item("crafting_focus", CraftingFocusItem::new);
     TYPE =
         Content.MENUS.register("crafting_focus", () -> IMenuTypeExtension.create(FocusMenu::new));
     bus.addListener(CraftingFocus::network);
@@ -54,6 +54,30 @@ public final class CraftingFocus {
             e.setCancellationResult(InteractionResult.SUCCESS);
           }
         });
+  }
+
+  public static final class CraftingFocusItem extends FocusItem {
+    CraftingFocusItem() {
+      super(new Item.Properties().stacksTo(1));
+    }
+
+    @Override
+    public void appendHoverText(
+        ItemStack stack, Item.TooltipContext context, List<Component> lines, TooltipFlag flag) {
+      super.appendHoverText(stack, context, lines, flag);
+      lines.add(Component.translatable("tooltip.autoturgy.focus_controls"));
+      for (String key : List.of("Gratis", "Storage", "Transposing"))
+        if (upgrade(stack, key))
+          lines.add(
+              Component.translatable("tooltip.autoturgy.focus_" + key.toLowerCase(Locale.ROOT)));
+      if (upgrade(stack, "Storage")) {
+        long stored =
+            stack.getOrDefault(DataComponents.CONTAINER, ItemContainerContents.EMPTY).stream()
+                .filter(s -> !s.isEmpty())
+                .count();
+        lines.add(Component.translatable("tooltip.autoturgy.focus_stored", stored));
+      }
+    }
   }
 
   public static int supplyAura(

@@ -269,7 +269,8 @@ public final class LogisticsReviewGameTests {
     InventariumMenu menu = new InventariumMenu(5, player.getInventory(), core, null, null);
     h.assertTrue(
         menu.intent(player, menu.revision(), 0, "", 90, false), "server page ninety accepted");
-    h.assertValueEqual(menu.counts.get(22), 300, "all three hundred types reachable");
+    h.assertValueEqual(
+        menu.counts.get(InventariumMenu.META + 4), 300, "all three hundred types reachable");
     h.assertTrue(
         !menu.catalogue.getItem(0).isEmpty(), "late catalogue page contains real identity");
     h.assertTrue(

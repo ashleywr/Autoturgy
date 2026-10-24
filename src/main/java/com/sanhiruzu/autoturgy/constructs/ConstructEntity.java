@@ -45,6 +45,16 @@ public abstract class ConstructEntity extends DeviceEntity implements DeviceBloc
 
   public abstract String research();
 
+  @Override
+  public List<com.sanhiruzu.autoturgy.host.ThaumaturgeIntegration.AspectReading> menuAspects() {
+    return fuels().stream()
+        .map(
+            k ->
+                new com.sanhiruzu.autoturgy.host.ThaumaturgeIntegration.AspectReading(
+                    k.location().toString(), amount(k), 64))
+        .toList();
+  }
+
   public int controlCount() {
     return 6;
   }

@@ -219,6 +219,11 @@ public final class EssentiaModule {
 
     public void configure(int i, int d) {}
 
+    @Override
+    public java.util.List<ThaumaturgeIntegration.AspectReading> menuAspects() {
+      return reading().aspects();
+    }
+
     public boolean addEye(LoadedTargets.Target eye) {
       Structure s = structure(level, worldPosition);
       if (!s.valid

@@ -109,7 +109,9 @@ public final class FoundationGameTests {
     helper.setBlock(DEVICE, SensingModule.TALLY.get());
     SensingModule.TallyEntity tally = helper.getBlockEntity(DEVICE);
     tally.target = target(helper, source, Direction.UP);
-    tally.settings[2] = 2;
+    tally.installLens(
+        new ItemStack(SensingModule.YIELD_LENS.get()),
+        helper.makeMockPlayer(net.minecraft.world.level.GameType.SURVIVAL));
     helper.setBlock(source, Blocks.STONE);
     for (Item item : List.of(Items.COBBLESTONE, Items.STONE)) {
       tally.filter =

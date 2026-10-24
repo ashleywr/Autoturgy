@@ -11,6 +11,7 @@ import com.leclowndu93150.thaumaturge.content.aura.node.BlockEntityNode;
 import com.leclowndu93150.thaumaturge.content.crucible.BlockEntityCrucible;
 import com.leclowndu93150.thaumaturge.content.infusion.BlockEntityInfusionMatrix;
 import com.leclowndu93150.thaumaturge.content.wands.ItemWand;
+import com.leclowndu93150.thaumaturge.content.workbench.BlockEntityArcaneWorkbench;
 import java.util.*;
 import net.minecraft.core.*;
 import net.minecraft.world.item.ItemStack;
@@ -56,19 +57,20 @@ public final class ThaumaturgeIntegration {
       }
       return new Snapshot(result, true, true, true);
     }
-    IEssentiaStorage storage = level.getCapability(EssentiaCapabilities.STORAGE, pos, side);
-    if (storage != null) {
-      int capacity =
-          level.getBlockState(pos).getBlock() instanceof IEssentiaJar jar ? jar.jarCapacity() : 0;
-      return of(storage.contents(), capacity, capacity > 0);
-    }
     if (be instanceof BlockEntityCrucible crucible)
       return of(crucible.getAspects(), BlockEntityCrucible.MAX_ASPECT, true);
     if (be instanceof BlockEntityInfusionMatrix matrix)
       return of(matrix.remainingEssentia(), 0, false);
+    if (be instanceof BlockEntityArcaneWorkbench workbench)
+      return wand(workbench.getInventory().wandStack());
     if (be instanceof IArcaneWorkbench workbench) return wand(workbench.wandStack());
     if (be instanceof BlockEntityRechargePedestal pedestal) return wand(pedestal.getItem());
-    if (be instanceof IAspectContainer container) return of(container.getAspects(), 0, false);
+    int capacity =
+        level.getBlockState(pos).getBlock() instanceof IEssentiaJar jar ? jar.jarCapacity() : 0;
+    IEssentiaStorage storage = level.getCapability(EssentiaCapabilities.STORAGE, pos, side);
+    if (storage != null) return of(storage.contents(), capacity, capacity > 0);
+    if (be instanceof IAspectContainer container)
+      return of(container.getAspects(), capacity, capacity > 0);
     return Snapshot.invalid();
   }
 

@@ -465,6 +465,9 @@ public final class GolemModule {
               ((ServerLevel) level).getEntity(id) instanceof EntityThaumaturgeGolem g
                   && (!g.isAlive() || linked(g) != this));
       progress = links.size();
+      settings[1] = radius();
+      settings[2] = taskmaster() && core() != null ? 1 : 0;
+      changed();
     }
 
     public void onLoad() {

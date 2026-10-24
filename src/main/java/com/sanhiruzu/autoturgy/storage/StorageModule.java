@@ -194,13 +194,14 @@ public final class StorageModule {
             return items.extractItem(slot, amount, simulate);
           }
         };
-    private final Map<Direction, List<ItemStack>> previous = new EnumMap<>(Direction.class);
+    private final Map<Direction, List<Observed>> previous = new EnumMap<>(Direction.class);
     private final List<ShareCredit> shareCredits = new ArrayList<>();
 
     private static final class ShareCredit {
       final Direction side;
       final ItemStack template;
       int fraction;
+      long pending;
 
       ShareCredit(Direction side, ItemStack template, int fraction) {
         this.side = side;
@@ -233,8 +234,11 @@ public final class StorageModule {
         settings[0] ^= 1 << i;
         changed();
         if (level != null) level.invalidateCapabilities(worldPosition);
-      } else if (i == 6) cycle(1, delta, 3);
-      else if (i == 7) bounded(2, delta, 1, settings[1] == 0 ? 100 : 4096);
+      } else if (i == 6) {
+        cycle(1, delta, 3);
+        previous.clear();
+        shareCredits.forEach(c -> c.pending = 0);
+      } else if (i == 7) bounded(2, delta, 1, settings[1] == 0 ? 100 : 4096);
     }
 
     public boolean isOwner(Player player) {
@@ -338,6 +342,7 @@ public final class StorageModule {
       for (Direction side : Direction.values()) {
         if ((settings[0] & 1 << side.ordinal()) == 0) {
           previous.remove(side);
+          shareCredits.stream().filter(c -> c.side == side).forEach(c -> c.pending = 0);
           continue;
         }
         BlockPos pos = worldPosition.relative(side);
@@ -347,25 +352,40 @@ public final class StorageModule {
                 && c.chestKind() == Kind.GREEDY
                 && (c.settings[0] & 1 << side.getOpposite().ordinal()) != 0) {
           previous.remove(side);
+          shareCredits.stream().filter(c -> c.side == side).forEach(c -> c.pending = 0);
           continue;
         }
         IItemHandler source =
             level.getCapability(Capabilities.ItemHandler.BLOCK, pos, side.getOpposite());
         if (source == null || source.getSlots() > 4096) {
           previous.remove(side);
+          shareCredits.stream().filter(c -> c.side == side).forEach(c -> c.pending = 0);
           continue;
         }
-        List<ItemStack> now = snapshot(source), before = previous.get(side);
+        List<Observed> now = snapshot(source), before = previous.get(side);
+        int budget = 1728;
+        shareCredits.stream()
+            .filter(c -> c.side == side && count(now, c.template) == 0)
+            .forEach(c -> c.pending = 0);
         if (before != null)
-          for (ItemStack stack : now) {
-            int fresh = count(now, stack) - count(before, stack);
-            if (fresh <= 0 || !StackFilters.accepts(filter, stack)) continue;
-            int limit =
+          for (Observed observed : now) {
+            ItemStack stack = observed.template;
+            ShareCredit credit = credit(side, stack);
+            if (credit == null) continue;
+            long change = observed.quantity - count(before, stack);
+            credit.pending = Math.max(0, credit.pending + Math.min(0, change));
+            if (!StackFilters.accepts(filter, stack)) {
+              credit.pending = 0;
+              continue;
+            }
+            if (change > 0) credit.pending += settings[1] == 0 ? share(credit, change) : change;
+            long limit =
                 settings[1] == 0
-                    ? share(side, stack, fresh)
+                    ? observed.quantity
                     : settings[1] == 1
                         ? Math.max(0, settings[2] - totalVariant(stack))
-                        : Math.max(0, count(now, stack) - settings[2]);
+                        : Math.max(0, observed.quantity - settings[2]);
+            credit.pending = Math.min(credit.pending, limit);
             Transfers.ItemResult result =
                 Transfers.moveItems(
                     source,
@@ -374,51 +394,63 @@ public final class StorageModule {
                         List.of(new StackFilters.Sample(stack, 1)),
                         false,
                         new StackFilters.MatchOptions(true, true, false, false)),
-                    Math.min(fresh, limit));
+                    (int) Math.min(budget, credit.pending));
+            int departed =
+                result.moved() + result.leftovers().stream().mapToInt(ItemStack::getCount).sum();
+            credit.pending = Math.max(0, credit.pending - departed);
+            budget -= departed;
             release(result.leftovers());
           }
         previous.put(side, snapshot(source));
       }
     }
 
-    private int share(Direction side, ItemStack stack, int fresh) {
+    private ShareCredit credit(Direction side, ItemStack stack) {
       ShareCredit credit =
           shareCredits.stream()
               .filter(c -> c.side == side && ItemStack.isSameItemSameComponents(c.template, stack))
               .findFirst()
               .orElse(null);
-      if (credit == null) {
-        if (shareCredits.size() >= 1024) return 0;
+      if (credit == null && shareCredits.size() < 1024) {
         credit = new ShareCredit(side, stack, 0);
         shareCredits.add(credit);
       }
-      int numerator = fresh * Math.clamp(settings[2], 1, 100) + credit.fraction;
-      credit.fraction = numerator % 100;
+      return credit;
+    }
+
+    private long share(ShareCredit credit, long fresh) {
+      long numerator = fresh * Math.clamp(settings[2], 1, 100) + credit.fraction;
+      credit.fraction = (int) (numerator % 100);
       setChanged();
       return numerator / 100;
     }
 
-    private static List<ItemStack> snapshot(IItemHandler source) {
-      List<ItemStack> result = new ArrayList<>();
-      for (int i = 0; i < source.getSlots(); i++) {
-        ItemStack s = source.getStackInSlot(i);
-        if (!s.isEmpty()) {
-          ItemStack old =
-              result.stream()
-                  .filter(x -> ItemStack.isSameItemSameComponents(x, s))
-                  .findFirst()
-                  .orElse(null);
-          if (old == null) result.add(s.copy());
-          else old.grow(s.getCount());
+    private record Observed(ItemStack template, long quantity) {}
+
+    private static List<Observed> snapshot(IItemHandler source) {
+      List<Observed> result = new ArrayList<>();
+      for (int i = 0; i < Math.min(4096, source.getSlots()); i++) {
+        ItemStack stack = source.getStackInSlot(i);
+        if (stack.isEmpty()) continue;
+        int match = -1;
+        for (int j = 0; j < result.size(); j++)
+          if (ItemStack.isSameItemSameComponents(result.get(j).template, stack)) {
+            match = j;
+            break;
+          }
+        if (match < 0) result.add(new Observed(stack.copyWithCount(1), stack.getCount()));
+        else {
+          Observed old = result.get(match);
+          result.set(match, new Observed(old.template, old.quantity + stack.getCount()));
         }
       }
       return result;
     }
 
-    private static int count(List<ItemStack> list, ItemStack stack) {
+    private static long count(List<Observed> list, ItemStack stack) {
       return list.stream()
-          .filter(x -> ItemStack.isSameItemSameComponents(x, stack))
-          .mapToInt(ItemStack::getCount)
+          .filter(x -> ItemStack.isSameItemSameComponents(x.template, stack))
+          .mapToLong(Observed::quantity)
           .sum();
     }
 

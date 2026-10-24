@@ -267,6 +267,8 @@ public final class EssentiaBoiler {
       settings[1] = burn;
       settings[2] = work;
       settings[3] = pending.totalAmount();
+      settings[4] =
+          net.minecraft.core.registries.BuiltInRegistries.FLUID.getId(tank.getFluid().getFluid());
       progress = Math.clamp(work * 15 / 100, 0, 15);
       changed();
     }

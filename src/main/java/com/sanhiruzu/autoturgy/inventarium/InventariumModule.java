@@ -387,6 +387,13 @@ public final class InventariumModule {
       if (i == 0) cycle(0, d, 6);
     }
 
+    public void resetType() {
+      inventoryType = "";
+      cached = List.of();
+      paidAt = Long.MIN_VALUE;
+      changed();
+    }
+
     public boolean linked(CoreEntity core) {
       return target != null
           && target.dimension().equals(level.dimension())

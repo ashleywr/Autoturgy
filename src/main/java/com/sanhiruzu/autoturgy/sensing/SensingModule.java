@@ -120,11 +120,9 @@ public final class SensingModule {
       }
       return true;
     }
-    if (be instanceof TallyEntity && (stack.is(UNBOUND_LENS.get()) || stack.is(YIELD_LENS.get()))) {
-      if (!be.getLevel().isClientSide) {
-        be.settings[2] = stack.is(UNBOUND_LENS.get()) ? 1 : 2;
-        be.changed();
-      }
+    if (be instanceof TallyEntity tally
+        && (stack.is(UNBOUND_LENS.get()) || stack.is(YIELD_LENS.get()))) {
+      if (!be.getLevel().isClientSide) tally.installLens(stack, player);
       return true;
     }
     return false;
@@ -231,6 +229,35 @@ public final class SensingModule {
     public BlockEntity newBlockEntity(BlockPos p, BlockState s) {
       return factory.apply(p, s);
     }
+
+    @Override
+    protected InteractionResult useWithoutItem(
+        BlockState state,
+        Level level,
+        BlockPos pos,
+        Player player,
+        net.minecraft.world.phys.BlockHitResult hit) {
+      if (player.isShiftKeyDown()
+          && level.getBlockEntity(pos) instanceof TallyEntity tally
+          && !tally.lens.isEmpty()) {
+        if (!level.isClientSide) tally.removeLens(player);
+        return InteractionResult.sidedSuccess(level.isClientSide);
+      }
+      return super.useWithoutItem(state, level, pos, player, hit);
+    }
+
+    @Override
+    protected void onRemove(
+        BlockState state, Level level, BlockPos pos, BlockState next, boolean moving) {
+      if (!state.is(next.getBlock())
+          && !level.isClientSide
+          && level.getBlockEntity(pos) instanceof TallyEntity tally) {
+        ItemStack owned = tally.lens;
+        tally.lens = ItemStack.EMPTY;
+        net.minecraft.world.level.block.Block.popResource(level, pos, owned);
+      }
+      super.onRemove(state, level, pos, next, moving);
+    }
   }
 
   public static class RemoteEntity extends DeviceEntity
@@ -301,13 +328,30 @@ public final class SensingModule {
     }
 
     public ThaumaturgeIntegration.Snapshot reading() {
-      if (target == null) {
-        var locus = com.sanhiruzu.autoturgy.essentia.EssentiaModule.reading(level, worldPosition);
-        if (locus != null) return locus;
+      LoadedTargets.Target selected = target;
+      if (selected == null) {
+        BlockPos above = worldPosition.above();
+        if (level.hasChunkAt(above) && level.getBlockEntity(above) instanceof RemoteEntity)
+          selected = new LoadedTargets.Target(level.dimension(), above, Direction.DOWN);
+        else {
+          var locus = com.sanhiruzu.autoturgy.essentia.EssentiaModule.reading(level, worldPosition);
+          if (locus != null) return locus;
+          selected = new LoadedTargets.Target(level.dimension(), above, Direction.DOWN);
+        }
       }
-      return target != null && LoadedTargets.local(level, worldPosition, target, 20)
-          ? ThaumaturgeIntegration.read(level, target.pos(), target.side())
-          : ThaumaturgeIntegration.Snapshot.invalid();
+      Set<BlockPos> seen = new HashSet<>(Set.of(worldPosition));
+      BlockPos origin = worldPosition;
+      for (int depth = 0; depth < 16; depth++) {
+        if (selected == null
+            || !LoadedTargets.local(level, origin, selected, 20)
+            || !LoadedTargets.local(level, worldPosition, selected, 20)
+            || !seen.add(selected.pos())) return ThaumaturgeIntegration.Snapshot.invalid();
+        if (level.getBlockEntity(selected.pos()) instanceof RemoteEntity remote) {
+          origin = selected.pos();
+          selected = remote.target;
+        } else return ThaumaturgeIntegration.read(level, selected.pos(), selected.side());
+      }
+      return ThaumaturgeIntegration.Snapshot.invalid();
     }
 
     public void serverTick() {
@@ -316,7 +360,23 @@ public final class SensingModule {
             ThaumaturgeIntegration.signal(
                 reading(), settings[0], selectedAspect, settings[1] != 0, settings[2]));
         progress = signal();
+        changed();
       }
+    }
+
+    @Override
+    protected void writeDisplay(CompoundTag tag) {
+      tag.putString("selectedAspect", selectedAspect);
+    }
+
+    @Override
+    protected void readDisplay(CompoundTag tag) {
+      selectedAspect = tag.getString("selectedAspect");
+    }
+
+    @Override
+    public List<ThaumaturgeIntegration.AspectReading> menuAspects() {
+      return reading().aspects();
     }
 
     public String selectedAspect() {
@@ -366,6 +426,41 @@ public final class SensingModule {
 
   public static final class TallyEntity extends DeviceEntity
       implements DeviceBlock.Ticking, TallyService.CountProvider {
+    private ItemStack lens = ItemStack.EMPTY;
+
+    public int lensMode() {
+      return lens.is(UNBOUND_LENS.get()) ? 1 : lens.is(YIELD_LENS.get()) ? 2 : 0;
+    }
+
+    public void installLens(ItemStack stack, Player player) {
+      if (level == null
+          || level.isClientSide
+          || !lens.isEmpty()
+          || !(stack.is(UNBOUND_LENS.get()) || stack.is(YIELD_LENS.get()))) return;
+      lens = stack.copyWithCount(1);
+      stack.shrink(1);
+      settings[2] = lensMode();
+      changed();
+    }
+
+    public void removeLens(Player player) {
+      ItemStack owned = lens;
+      lens = ItemStack.EMPTY;
+      settings[2] = 0;
+      changed();
+      if (!owned.isEmpty() && !player.addItem(owned)) player.drop(owned, false);
+    }
+
+    public LoadedTargets.Target effectiveTarget() {
+      if (target != null) return target;
+      BlockPos above = worldPosition.above();
+      if (level.hasChunkAt(above) && level.getBlockEntity(above) instanceof RemoteEntity)
+        return new LoadedTargets.Target(level.dimension(), above, Direction.DOWN);
+      Direction facing = getBlockState().getValue(DeviceBlock.FACING);
+      return new LoadedTargets.Target(
+          level.dimension(), worldPosition.relative(facing.getOpposite()), facing);
+    }
+
     public TallyEntity(BlockPos p, BlockState s) {
       super(TALLY_TYPE.get(), p, s);
       settings[0] = 1;
@@ -377,28 +472,72 @@ public final class SensingModule {
     }
 
     public int controlCount() {
-      return 4;
+      return 5;
     }
 
     public void configure(int i, int delta) {
       if (i <= 1) bounded(i, delta, i == 0 ? 0 : 1, 16000);
-      else if (i == 2) cycle(i, delta, 3);
+      else if (i == 4) cycle(i, delta, 3);
       else if (i == 3) cycle(i, delta, 2);
+    }
+
+    @Override
+    public boolean controlEditable(int i) {
+      return i != 2;
     }
 
     public long count(StackFilters.Filter incoming, Set<BlockPos> visited, int depth) {
       // Chained tally reads preserve the requesting filter, preventing hidden expansion.
       return TallyService.count(
-          (ServerLevel) level, worldPosition, target, incoming, settings[2], visited, depth);
+          (ServerLevel) level,
+          worldPosition,
+          effectiveTarget(),
+          incoming,
+          lensMode(),
+          visited,
+          depth);
     }
 
     public long measured() {
       return count(filter, new HashSet<>(Set.of(worldPosition)), 0);
     }
 
+    public boolean quantitiesSatisfied() {
+      if (filter.samples().isEmpty()) return false;
+      boolean any = false, all = true;
+      for (var sample : filter.samples().stream().limit(9).toList()) {
+        var single = new StackFilters.Filter(List.of(sample), false, filter.options());
+        long found = count(single, new HashSet<>(Set.of(worldPosition)), 0);
+        boolean satisfied =
+            filter.blacklist() ? found < sample.quantity() : found >= sample.quantity();
+        any |= satisfied;
+        all &= satisfied;
+      }
+      return settings[4] == 2 ? any : all;
+    }
+
+    @Override
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider lookup) {
+      super.saveAdditional(tag, lookup);
+      if (!lens.isEmpty()) tag.put("installedLens", lens.save(lookup));
+    }
+
+    @Override
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider lookup) {
+      super.loadAdditional(tag, lookup);
+      ItemStack saved = ItemStack.parseOptional(lookup, tag.getCompound("installedLens"));
+      lens =
+          saved.is(UNBOUND_LENS.get()) || saved.is(YIELD_LENS.get())
+              ? saved.copyWithCount(1)
+              : ItemStack.EMPTY;
+      settings[2] = lensMode();
+      settings[4] = Math.clamp(settings[4], 0, 2);
+    }
+
     public void serverTick() {
       if (level.getGameTime() % 10 != 0) return;
       long count = measured();
+      count = Math.min(count, Math.max(settings[0], settings[1]));
       int signal =
           count < settings[0]
               ? 0
@@ -409,6 +548,7 @@ public final class SensingModule {
                           + 14
                               * Math.max(0, count - settings[0])
                               / Math.max(1, settings[1] - settings[0]));
+      if (settings[4] != 0) signal = quantitiesSatisfied() ? 15 : 0;
       output(settings[3] != 0 ? 15 - signal : signal);
       progress = signal();
     }

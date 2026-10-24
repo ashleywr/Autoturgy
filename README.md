@@ -1,8 +1,8 @@
 # Autoturgy
 
 An original magical automation addon for Minecraft **1.21.1**, NeoForge
-**21.1.262**, Java **21** and Thaumaturge **1.0.4**. This is a development preview
-of a broader recreation; it does not claim complete historical feature parity.
+**21.1.262**, Java **21** and Thaumaturge **1.0.4**. Version **1.0.0** covers the fifteen
+survival gameplay families described below, with explicit modern adaptations.
 
 Inspired by [Automagy 0.28.2 by Tuhljin](https://www.curseforge.com/minecraft/mc-mods/automagy).
 Autoturgy is an original unofficial recreation; no original code or assets are reused.
@@ -27,7 +27,9 @@ Autoturgy is an original unofficial recreation; no original code or assets are r
 
 All listed devices perform their described function. Real host golems walk,
 collect actual indexed items, carry them in host hands and deliver through
-validated reservations. Experience and portable equipment now have survival functionality and automated coverage; final release-client and full-pack acceptance remain separate. This preview does not claim complete feature parity.
+validated reservations. Automated checks use the actual installed host and dependencies.
+Final release-client and isolated full-pack acceptance are recorded separately.
+No claim of exact historical constants or every creative catalogue item is made.
 
 ## Using the workshop
 
@@ -65,7 +67,7 @@ The vis reader uses public Thaumaturge contracts for jars, crucibles, nodes,
 infusion demand, wand-bearing workbenches and recharge pedestals. Node extrema
 compare current/base fullness, including depleted base aspects. Wand automatic
 capacity comes from its actual parts and measurements use centivis. Aspect
-selections persist as stable IDs; the menu names those IDs. Count mode emits
+selections persist when contents change; native aspect icons have localized hover names. Count mode emits
 the number of aspect types directly, ignores capacity/selection and preserves
 extended values for redcrystal. Infusion demand and unknown storage types need
 a manual capacity for normalized amount measurements. Invalid targets emit zero
@@ -279,7 +281,7 @@ These capacities, shapes, costs and rates are modern defaults wherever the
 public reference omits numbers. The phase-three frozen client review observed
 actual tank capacity/intake, paid boiler output, bound locus eyes, soup/milk
 conservation, natural vishroom growth, real mirror deliveries and host research
-pages. Later feature families and final full-pack acceptance remain pending.
+pages. Final 1.0.0 client and full-pack acceptance are separate from these earlier observations.
 
 ## Host golems and workbench
 
@@ -350,8 +352,7 @@ Phase-four-a automation covers fully initialized real host entities, strict
 walking/hand conservation, two competing workers, cancellation/full output,
 saved custody without a teleport, source-side revocation, death and host pickup,
 genuine separate Nether-core chunk unload/death/reload, inhibition overlap and
-host-goal restoration, real recipes/remainders and every upgrade. Frozen release
-client inspection of these new devices and the disperser remains pending.
+host-goal restoration, real recipes/remainders and every upgrade. Release-client and saved-world checks are tracked separately from this automated evidence.
 
 ## Extending progression
 
@@ -432,8 +433,7 @@ real host hands and save/load. Final saved-world client acceptance is separate.
 Automated construct checks use the actual installed host. Its1.0.4 HARNESS_JAR
 stores a copied ItemStack, violating NeoForge IDE-only component validation; the
 test source set narrowly admits that host class. No production suppression or
-host modification is included. Actual release-client harness, rendered
-structures, research/menus and final pack acceptance remain pending.
+host modification is included. Release-client and full-pack evidence is recorded separately.
 
 
 ## Experience and portable tools
@@ -520,3 +520,47 @@ name, wear and other components. Enchanted rods are explicitly refused rather
 than having their enchantments replaced. Existing milk/mushroom/vishroom fluid
 and food functionality remains available. All numerical costs/rates above are
 modern defaults where the historical public descriptions omit constants.
+
+## Final integration and tested support
+
+Unlinked Tally Boxes read the adjacent inventory behind their output face. A bound
+Remote Comparator directly above a Tally or Vis Reader bridges its loaded target;
+an explicit copied eye overrides that arrangement. Vis Readers also read actual
+jars, crucibles, nodes and wand holders directly above, retaining Locus pool
+discovery. Same-dimension, distance, sided-access and cycle guards apply.
+
+Clear Tally lenses are the unmodified box. Unbound and Yield are paid physical
+items: install on an empty box, sneak-use empty-handed to recover, and recover
+the same component-bearing lens on break. The menu cannot create lenses. Aggregate
+Count retains analog thresholds; All Quantities and Any Quantity compare each
+written sample against actual stock. Whitelists require at least the quantity;
+blacklists require less. Empty lists satisfy neither quantity rule.
+
+Greedy observations use separate long counts, including deep storage above 2^32.
+Each loaded direction transfers at most 1,728 items per ten-tick visit. Earned
+shares defer across full/refusing destinations and subsequent ticks. External
+withdrawals reduce outstanding entitlement; a missing source or reload resets
+observations and entitlement without treating existing stock as a new deposit.
+Fractional percentage credit persists. Inventarium stock travels as full positive
+64-bit counts with readable abbreviated rows and exact hover counts.
+
+Construct ports, Vis selection, Locus/reader totals and mixed field-note prose use
+the installed host's registered aspect icons and localized hover names. No host
+textures are bundled. Scribe contents expose Reset Type and Local/Whole System;
+golem controls show link, fetter/radius or core/memory status; fluid screens name
+their current contents. Upgraded Crafting Focus tooltips identify active upgrades
+and occupied stored-input slots while retaining normal wand/pouch compatibility.
+
+The tested development coordinates are Minecraft 1.21.1, NeoForge 21.1.262,
+Thaumaturge 1.0.4 and Curios 9.5.1+1.21.1 on Java 21. The installed host's other
+required dependencies are pinned in the outer release manifest. Newer dependency
+versions allowed by metadata have not been independently qualified. Build with
+Gradle 8.8: `./gradlew build check`; the cumulative actual-host suite uses
+`./gradlew runGameTestServer`. GameTest code/resources are excluded from the JAR.
+
+The Thinking Cap and Infinity Jar were creative/helper content and are excluded
+from this survival recreation. Phenomenon's historical role remains undefined
+by the public behavioral reference and is explicitly excluded. Duplicate lit/off
+states and repeated rune metadata names are consolidated into modern functional
+states; both Memory Block names map to one physical memory device. No decorative
+survival substitute or claim of exact item-for-item parity is introduced.

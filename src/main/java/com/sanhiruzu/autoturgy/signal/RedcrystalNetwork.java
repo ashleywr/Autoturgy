@@ -151,6 +151,18 @@ public final class RedcrystalNetwork {
       return 9;
     }
 
+    @Override
+    public boolean controlVisible(int i) {
+      return i != 6 && i != 7
+          || i == 6 && variant() == Variant.DIM
+          || i == 7 && variant() == Variant.DENSE;
+    }
+
+    @Override
+    public boolean controlEditable(int i) {
+      return controlVisible(i);
+    }
+
     public boolean receives(Direction d) {
       return (settings[0] & 1 << (d.ordinal() * 2)) != 0;
     }
@@ -170,8 +182,8 @@ public final class RedcrystalNetwork {
         int mode = Math.floorMod(((settings[0] >> shift) & 3) + delta, 4);
         settings[0] = (settings[0] & ~(3 << shift)) | mode << shift;
         changed();
-      } else if (i == 6) bounded(2, delta, 1, 15);
-      else if (i == 7) bounded(3, delta, 1, 31);
+      } else if (i == 6 && variant() == Variant.DIM) bounded(2, delta, 1, 15);
+      else if (i == 7 && variant() == Variant.DENSE) bounded(3, delta, 1, 31);
       else if (i == 8) cycle(1, delta, 2);
     }
 

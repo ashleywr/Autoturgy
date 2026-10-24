@@ -90,13 +90,18 @@ public final class InventariumScreen extends AbstractContainerScreen<Inventarium
       if (menu.scribeView)
         addRenderableWidget(
             Button.builder(Component.translatable("menu.autoturgy.local_all"), b -> send(2))
-                .bounds(leftPos + 75, topPos + 180, 225, 20)
+                .bounds(leftPos + 75, topPos + 180, 108, 20)
+                .build());
+      if (menu.scribeView)
+        addRenderableWidget(
+            Button.builder(Component.translatable("menu.autoturgy.reset_type"), b -> send(4))
+                .bounds(leftPos + 188, topPos + 180, 112, 20)
                 .build());
     }
   }
 
   private int page() {
-    return menu.counts.get(InventariumMenu.ROWS * 6 + 3);
+    return menu.counts.get(InventariumMenu.META + 3);
   }
 
   private void query(int page) {
@@ -128,7 +133,7 @@ public final class InventariumScreen extends AbstractContainerScreen<Inventarium
     if (mirrors != null)
       mirrors.setMessage(
           Component.translatable(
-              menu.counts.get(25) == 2
+              menu.counts.get(InventariumMenu.META + 7) == 2
                   ? "menu.autoturgy.mirrors_output"
                   : "menu.autoturgy.mirrors_input"));
   }
@@ -195,21 +200,27 @@ public final class InventariumScreen extends AbstractContainerScreen<Inventarium
           font, Component.translatable("menu.autoturgy.input"), 243, 136, 0xFFC8E7DC, false);
       g.drawString(
           font,
-          (page() + 1) + " / " + Math.max(1, (menu.counts.get(22) + 2) / 3),
+          (page() + 1) + " / " + Math.max(1, (menu.counts.get(InventariumMenu.META + 4) + 2) / 3),
           10,
           181,
           0xFFC8E7DC,
           false);
       g.drawWordWrap(
-          font, Component.translatable("menu.autoturgy.worker_pending"), 10, 195, 58, 0xFFC8E7DC);
+          font,
+          Component.translatable(
+              menu.hasDemand() ? "menu.autoturgy.delivery_active" : "menu.autoturgy.delivery_idle"),
+          10,
+          195,
+          58,
+          0xFFC8E7DC);
     } else {
       g.drawString(
           font,
-          menu.counts.get(19)
+          menu.counts.get(InventariumMenu.META + 1)
               + " / "
-              + menu.counts.get(18)
+              + menu.counts.get(InventariumMenu.META + 0)
               + " slots; tally "
-              + (menu.counts.get(20) == 0 ? "stock" : "demand"),
+              + (menu.counts.get(InventariumMenu.META + 2) == 0 ? "stock" : "demand"),
           10,
           210,
           0xFFC8E7DC,
@@ -217,20 +228,31 @@ public final class InventariumScreen extends AbstractContainerScreen<Inventarium
       g.drawString(
           font,
           "Memory "
-              + menu.counts.get(26)
+              + menu.counts.get(InventariumMenu.META + 8)
               + " / "
-              + menu.counts.get(27)
+              + menu.counts.get(InventariumMenu.META + 9)
               + "; Scribes "
-              + menu.counts.get(28)
+              + menu.counts.get(InventariumMenu.META + 10)
               + " / "
-              + menu.counts.get(29),
+              + menu.counts.get(InventariumMenu.META + 11),
           10,
           221,
           0xFFC8E7DC,
           false);
       g.drawString(
           font,
-          "Page " + (page() + 1) + " / " + Math.max(1, (menu.counts.get(22) + 2) / 3),
+          (menu.scribeView
+                  ? Component.translatable(
+                              menu.counts.get(InventariumMenu.META + 6) == 1
+                                  ? "menu.autoturgy.view_local"
+                                  : "menu.autoturgy.view_all")
+                          .getString()
+                      + " · "
+                  : "")
+              + "Page "
+              + (page() + 1)
+              + " / "
+              + Math.max(1, (menu.counts.get(InventariumMenu.META + 4) + 2) / 3),
           10,
           135,
           0xFFC8E7DC,
@@ -239,11 +261,19 @@ public final class InventariumScreen extends AbstractContainerScreen<Inventarium
   }
 
   private static String compact(long value) {
-    return value < 1000
-        ? Long.toString(value)
-        : value < 1000000
-            ? value / 1000 + "k"
-            : value < 1000000000 ? value / 1000000 + "M" : value / 1000000000 + "G";
+    if (value < 1000) return Long.toString(value);
+    String[] units = {"k", "M", "G", "T", "P", "E"};
+    double scaled = value;
+    int unit = -1;
+    while (scaled >= 1000 && unit < units.length - 1) {
+      scaled /= 1000;
+      unit++;
+    }
+    return String.format(
+        java.util.Locale.ROOT,
+        scaled < 10 ? "%.2f%s" : scaled < 100 ? "%.1f%s" : "%.0f%s",
+        scaled,
+        units[unit]);
   }
 
   @Override

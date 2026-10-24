@@ -18,6 +18,8 @@ public final class DeviceScreens {
   }
 
   public static final class ControlScreen extends AbstractContainerScreen<ControlMenu> {
+    private int aspectOffset;
+
     public ControlScreen(ControlMenu menu, Inventory inv, Component title) {
       super(menu, inv, title);
       imageWidth = 310;
@@ -28,6 +30,7 @@ public final class DeviceScreens {
     protected void init() {
       super.init();
       for (int i = 0; i < menu.controls && !readOnly(); i++) {
+        if ((menu.visibleMask & 1 << i) == 0 || (menu.editableMask & 1 << i) == 0) continue;
         final int control = i;
         addRenderableWidget(
             Button.builder(Component.literal("−"), b -> send(control * 2))
@@ -86,24 +89,78 @@ public final class DeviceScreens {
                   menu.data.get(8) == 1 ? "Active" : "Stopped",
                   menu.data.get(9),
                   menu.data.get(10))
-              : Component.translatable("menu.autoturgy.status", menu.data.get(0), menu.data.get(1)),
+              : menu.kind.startsWith("golemic_")
+                  ? Component.translatable("menu.autoturgy.golem_status")
+                  : Component.translatable(
+                      "menu.autoturgy.status", menu.data.get(0), menu.data.get(1)),
           16,
           35,
           0xFFC8E7DC,
           false);
       for (int i = 0; i < menu.controls; i++) {
+        if ((menu.visibleMask & 1 << i) == 0) continue;
         String label =
             Component.translatable("control.autoturgy." + menu.kind + "." + i).getString();
         g.drawString(font, font.plainSubstrByWidth(label, 140), 12, 54 + i * 16, 0xFFDDE8E3, false);
+        String aspect = aspect(i);
+        if (!aspect.isEmpty()) {
+          int index = menu.aspects.indexOf(aspect);
+          AspectUi.draw(
+              g,
+              font,
+              156,
+              50 + i * 16,
+              aspect,
+              construct() && index >= 0 ? menu.data.get(14 + index * 2) : -1);
+        } else
+          g.drawString(
+              font,
+              font.plainSubstrByWidth(value(i).getString(), 89),
+              156,
+              54 + i * 16,
+              0xFFFFD27B,
+              false);
+      }
+      if (menu.kind.equals("thirsty_tank") || menu.kind.equals("alchemical_boiler"))
         g.drawString(
             font,
-            font.plainSubstrByWidth(value(i).getString(), 89),
-            156,
-            54 + i * 16,
-            0xFFFFD27B,
+            font.plainSubstrByWidth(fluidName().getString(), 280),
+            12,
+            186,
+            0xFFC8E7DC,
             false);
+      if (menu.kind.equals("essentia_locus") || menu.kind.equals("vis_reader"))
+        for (int slot = 0; slot < Math.min(9, menu.aspects.size() - aspectOffset); slot++)
+          AspectUi.draw(
+              g,
+              font,
+              12 + slot % 3 * 96,
+              140 + slot / 3 * 19,
+              menu.aspects.get(slot + aspectOffset),
+              menu.data.get(14 + (slot + aspectOffset) * 2));
+      if (menu.kind.equals("golemic_inhibitor") || menu.kind.equals("golemic_taskmaster")) {
+        g.drawString(
+            font,
+            Component.translatable("menu.autoturgy.golem_links", menu.data.get(1)),
+            12,
+            91,
+            0xFFC8E7DC,
+            false);
+        g.drawWordWrap(
+            font,
+            menu.kind.equals("golemic_inhibitor")
+                ? Component.translatable(
+                    "menu.autoturgy.inhibitor_radius", menu.data.get(3), menu.data.get(3) / 8)
+                : Component.translatable(
+                    menu.data.get(4) == 1
+                        ? "menu.autoturgy.core_ready"
+                        : "menu.autoturgy.core_missing"),
+            12,
+            112,
+            280,
+            0xFFC8E7DC);
       }
-      if (menu.controls == 0)
+      if (menu.controls == 0 && !menu.kind.equals("golemic_taskmaster"))
         g.drawWordWrap(
             font, Component.translatable("menu.autoturgy.reader_hint"), 16, 66, 278, 0xFFDDE8E3);
       if (construct()) {
@@ -129,29 +186,43 @@ public final class DeviceScreens {
       }
     }
 
+    @Override
+    public boolean mouseScrolled(double x, double y, double horizontal, double vertical) {
+      if ((menu.kind.equals("essentia_locus") || menu.kind.equals("vis_reader"))
+          && y >= topPos + 136
+          && y < topPos + 199
+          && menu.aspects.size() > 9) {
+        int last = Math.max(0, (menu.aspects.size() - 7) / 3 * 3);
+        aspectOffset = Math.clamp(aspectOffset - (int) Math.signum(vertical) * 3, 0, last);
+        return true;
+      }
+      return super.mouseScrolled(x, y, horizontal, vertical);
+    }
+
+    private Component fluidName() {
+      int id = menu.data.get(menu.kind.equals("thirsty_tank") ? 10 : 6);
+      var fluid = net.minecraft.core.registries.BuiltInRegistries.FLUID.byId(id);
+      return fluid == null || fluid == net.minecraft.world.level.material.Fluids.EMPTY
+          ? Component.translatable("menu.autoturgy.empty_fluid")
+          : new net.neoforged.neoforge.fluids.FluidStack(fluid, 1).getHoverName();
+    }
+
+    private String aspect(int i) {
+      int value = menu.data.get(i + 2);
+      if (construct())
+        return value > 0 && value <= menu.aspects.size() ? menu.aspects.get(value - 1) : "";
+      if (menu.kind.equals("vis_reader")
+          && i == menu.selectionControl
+          && value >= 0
+          && value < menu.selections.size()) return menu.selections.get(value);
+      return "";
+    }
+
     private Component value(int i) {
       int value = menu.data.get(i + 2);
       if (construct()) {
-        java.util.List<String> names =
-            switch (menu.kind) {
-              case "thaumostatic_spire" -> java.util.List.of("Potentia", "Aer", "Volatus");
-              case "nethermind" ->
-                  java.util.List.of(
-                      "Ignis",
-                      "Terra",
-                      "Vitreus",
-                      "Lux",
-                      "Spiritus",
-                      "Bestia",
-                      "Exanimis",
-                      "Volatus",
-                      "Auram");
-              case "dimensional_lure" -> java.util.List.of("Alienis", "Potentia");
-              default -> java.util.List.of("Potentia", "Desiderium");
-            };
-        return value > 0 && value <= names.size()
-            ? Component.literal(names.get(value - 1))
-            : Component.translatable("menu.autoturgy.closed");
+        String key = aspect(i);
+        return key.isEmpty() ? Component.translatable("menu.autoturgy.closed") : AspectUi.name(key);
       }
       if (menu.kind.equals("thirsty_tank") && i < 6)
         return Component.translatable("glyph.autoturgy." + value);
@@ -169,7 +240,7 @@ public final class DeviceScreens {
         String key = menu.selections.get(value);
         return key.isEmpty()
             ? Component.translatable("menu.autoturgy.all_aspects")
-            : Component.literal(key.substring(key.indexOf(':') + 1));
+            : AspectUi.name(key);
       }
       if (menu.kind.equals("redcrystal")) {
         if (i < 6)
@@ -184,6 +255,8 @@ public final class DeviceScreens {
         return Component.translatable("mode.autoturgy.trigger." + value);
       if (menu.kind.equals("vis_reader") && i == 0)
         return Component.translatable("mode.autoturgy.vis." + value);
+      if (menu.kind.equals("tally_box") && i == 4)
+        return Component.translatable("mode.autoturgy.tally_rule." + value);
       if (menu.kind.equals("tally_box") && i == 2)
         return Component.translatable("mode.autoturgy.lens." + value);
       if (menu.kind.equals("signum_entia") && i == 1)
@@ -208,7 +281,8 @@ public final class DeviceScreens {
           && mx < leftPos + 245
           && my >= topPos + 50
           && row >= 0
-          && row < menu.controls) {
+          && row < menu.controls
+          && (menu.visibleMask & 1 << row) != 0) {
         g.renderTooltip(
             font,
             Component.translatable("control.autoturgy." + menu.kind + "." + row)
@@ -217,6 +291,19 @@ public final class DeviceScreens {
             mx,
             my);
       }
+      if (menu.kind.equals("essentia_locus") || menu.kind.equals("vis_reader"))
+        for (int slot = 0; slot < Math.min(9, menu.aspects.size() - aspectOffset); slot++) {
+          int i = slot + aspectOffset;
+          int x = leftPos + 12 + slot % 3 * 96, y = topPos + 140 + slot / 3 * 19;
+          if (mx >= x && mx < x + 92 && my >= y && my < y + 17)
+            g.renderTooltip(
+                font,
+                AspectUi.name(menu.aspects.get(i))
+                    .copy()
+                    .append(": " + menu.data.get(14 + i * 2) + " / " + menu.data.get(15 + i * 2)),
+                mx,
+                my);
+        }
     }
   }
 

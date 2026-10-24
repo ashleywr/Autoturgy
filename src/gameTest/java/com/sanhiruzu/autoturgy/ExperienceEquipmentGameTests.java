@@ -697,9 +697,9 @@ public final class ExperienceEquipmentGameTests {
                 + round.getComponentsPatch());
       commands.add("give @s " + spec + " " + stack.getCount());
     }
-    var directory = java.nio.file.Path.of("../phase4c");
+    var directory = java.nio.file.Path.of(System.getProperty("autoturgy.testReport")).getParent();
     java.nio.file.Files.createDirectories(directory);
-    java.nio.file.Files.write(directory.resolve("client-items.mcfunction"), commands);
+    java.nio.file.Files.write(directory.resolve("client-equipment.mcfunction"), commands);
     p.discard();
     h.succeed();
   }

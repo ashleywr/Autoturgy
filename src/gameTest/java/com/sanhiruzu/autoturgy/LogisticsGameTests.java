@@ -335,8 +335,11 @@ public final class LogisticsGameTests {
     AspectList aspects = AspectList.EMPTY.add(ordo, 20);
     node.applyNodeData(new NodeData(NodeType.NORMAL, Optional.empty(), aspects, aspects));
     node.setEnergized(true);
+    // Refresh the fixture relay on a fresh scan tick; a periodic core tick can cache
+    // a refusal before this manual relay link exists, and that cache lasts this tick.
+    int scanDelay = Math.floorMod(h.getLevel().getGameTime() + 3, 20) == 0 ? 4 : 3;
     h.runAfterDelay(
-        3,
+        scanDelay,
         () -> {
           BlockEntityVisRelay relay = h.getBlockEntity(relayPos);
           relay.refreshLink(h.getLevel());

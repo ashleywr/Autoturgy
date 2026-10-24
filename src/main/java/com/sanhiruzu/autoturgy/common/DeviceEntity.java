@@ -48,6 +48,18 @@ public abstract class DeviceEntity extends BlockEntity implements MenuProvider {
 
   public abstract void configure(int index, int delta);
 
+  public boolean controlVisible(int i) {
+    return true;
+  }
+
+  public boolean controlEditable(int i) {
+    return true;
+  }
+
+  public List<com.sanhiruzu.autoturgy.host.ThaumaturgeIntegration.AspectReading> menuAspects() {
+    return List.of();
+  }
+
   public void activate() {}
 
   public void cancel() {}

@@ -233,6 +233,8 @@ public final class FluidModule {
       for (int i = 0; i < 6; i++) settings[i] = glyphs[i] == null ? 0 : glyphs[i].ordinal() + 1;
       settings[6] = tank.getFluidAmount();
       settings[7] = capacity();
+      settings[8] =
+          net.minecraft.core.registries.BuiltInRegistries.FLUID.getId(tank.getFluid().getFluid());
       changed();
     }
 

@@ -15,7 +15,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public final class InventariumMenu extends AbstractContainerMenu {
   public static DeferredHolder<MenuType<?>, MenuType<InventariumMenu>> TYPE;
-  public static final int ROWS = 3;
+  public static final int ROWS = 3, META = ROWS * 12;
   public final SimpleContainer catalogue = new SimpleContainer(ROWS),
       sample = new SimpleContainer(1);
   public final ContainerData counts;
@@ -47,7 +47,7 @@ public final class InventariumMenu extends AbstractContainerMenu {
     core = null;
     tome = null;
     scribe = null;
-    counts = new SimpleContainerData(ROWS * 6 + 12);
+    counts = new SimpleContainerData(META + 13);
     initialize(inv, new net.neoforged.neoforge.items.ItemStackHandler(1));
   }
 
@@ -67,31 +67,33 @@ public final class InventariumMenu extends AbstractContainerMenu {
     counts =
         new ContainerData() {
           public int getCount() {
-            return ROWS * 6 + 12;
+            return META + 13;
           }
 
           public void set(int i, int v) {}
 
           public int get(int i) {
-            if (i == ROWS * 6) return core.structure.capacity();
-            if (i == ROWS * 6 + 1) return core.index.slots();
-            if (i == ROWS * 6 + 2) return core.settings[0];
-            if (i == ROWS * 6 + 3) return page;
-            if (i == ROWS * 6 + 4) return totalRows;
-            if (i == ROWS * 6 + 5) return revision;
-            if (i == ROWS * 6 + 6) return local ? 1 : 0;
-            if (i == ROWS * 6 + 7) return tome == null ? 0 : tome.settings[0];
-            if (i == ROWS * 6 + 8) return core.memoryUsed;
-            if (i == ROWS * 6 + 9) return core.memoryMaximum;
-            if (i == ROWS * 6 + 10) return core.scribes.size();
-            if (i == ROWS * 6 + 11) return 1 + core.structure.clusters();
-            ItemStack template = catalogue.getItem(i / 6);
-            int part = i % 6;
+            if (i == META) return core.structure.capacity();
+            if (i == META + 1) return core.index.slots();
+            if (i == META + 2) return core.settings[0];
+            if (i == META + 3) return page;
+            if (i == META + 4) return totalRows;
+            if (i == META + 5) return revision;
+            if (i == META + 6) return local ? 1 : 0;
+            if (i == META + 7) return tome == null ? 0 : tome.settings[0];
+            if (i == META + 8) return core.memoryUsed;
+            if (i == META + 9) return core.memoryMaximum;
+            if (i == META + 10) return core.scribes.size();
+            if (i == META + 12)
+              return core.orders.orders().stream().anyMatch(o -> o.remaining() > 0) ? 1 : 0;
+            if (i == META + 11) return 1 + core.structure.clusters();
+            ItemStack template = catalogue.getItem(i / 12);
+            int part = i % 12;
             long value =
-                part < 2
+                part < 4
                     ? displayed.count(template)
-                    : part < 4 ? core.orders.reserved(template) : core.orders.demand(template);
-            return (int) (value >> (part % 2 * 16)) & 65535;
+                    : part < 8 ? core.orders.reserved(template) : core.orders.demand(template);
+            return (int) (value >> (part % 4 * 16)) & 65535;
           }
         };
     initialize(
@@ -132,7 +134,7 @@ public final class InventariumMenu extends AbstractContainerMenu {
           addSlot(new Slot(inv, col + row * 9 + 9, 74 + col * 18, 154 + row * 18));
       for (int col = 0; col < 9; col++) addSlot(new Slot(inv, col, 74 + col * 18, 212));
     }
-    addDataSlots(counts);
+    addDataSlots(com.sanhiruzu.autoturgy.common.MenuIntTransport.wire(counts));
   }
 
   private InventoryIndex.Snapshot view() {
@@ -184,12 +186,18 @@ public final class InventariumMenu extends AbstractContainerMenu {
   }
 
   public long value(int row, int metric) {
-    return (counts.get(row * 6 + metric * 2) & 65535L)
-        | ((counts.get(row * 6 + metric * 2 + 1) & 65535L) << 16);
+    long result = 0;
+    for (int word = 0; word < 4; word++)
+      result |= (counts.get(row * 12 + metric * 4 + word) & 65535L) << (word * 16);
+    return result;
+  }
+
+  public boolean hasDemand() {
+    return counts.get(META + 12) != 0;
   }
 
   public int revision() {
-    return counts.get(ROWS * 6 + 5);
+    return counts.get(META + 5);
   }
 
   @Override
@@ -225,6 +233,12 @@ public final class InventariumMenu extends AbstractContainerMenu {
     }
     if (action == 2 && scribe != null) {
       local = !local;
+      page = 0;
+      refresh();
+      return true;
+    }
+    if (action == 4 && scribe != null) {
+      scribe.resetType();
       page = 0;
       refresh();
       return true;
