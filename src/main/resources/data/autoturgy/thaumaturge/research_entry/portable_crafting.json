@@ -1,0 +1,52 @@
+{
+  "category": "autoturgy:automation",
+  "name": "research.autoturgy.portable_crafting.title",
+  "parents": [
+    "autoturgy:golem_crafting"
+  ],
+  "column": 7,
+  "row": 2,
+  "icons": [
+    "autoturgy:crafting_focus"
+  ],
+  "stages": [
+    {
+      "text": "research.autoturgy.portable_crafting.study",
+      "obtain": [
+        {
+          "items": [
+            "minecraft:paper"
+          ],
+          "amount": 1
+        }
+      ],
+      "required_knowledge": [
+        {
+          "type": "observation",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "text": "research.autoturgy.portable_crafting.complete",
+      "recipes": [
+        "autoturgy:crafting_focus",
+        "autoturgy:crafting_focus_gratis",
+        "autoturgy:crafting_focus_storage",
+        "autoturgy:crafting_focus_transposing"
+      ]
+    }
+  ],
+  "note_aspects": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 4
+    }
+  ],
+  "complexity": 2
+}

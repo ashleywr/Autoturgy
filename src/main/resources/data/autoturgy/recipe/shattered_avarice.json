@@ -1,0 +1,28 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "autoturgy:avarice_pearl"
+  },
+  "components": [
+    {
+      "item": "autoturgy:perditio_sliver"
+    },
+    {
+      "item": "autoturgy:perditio_sliver"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:perditio",
+      "amount": 4
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:collecting_pearls"
+  },
+  "result": {
+    "id": "autoturgy:shattered_avarice",
+    "count": 3
+  }
+}

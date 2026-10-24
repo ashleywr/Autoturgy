@@ -35,6 +35,7 @@ public final class AutoturgyClient {
 
   @SubscribeEvent
   public static void screens(RegisterMenuScreensEvent event) {
+    event.register(com.sanhiruzu.autoturgy.equipment.CraftingFocus.TYPE.get(), FocusScreen::new);
     event.register(ControlMenu.TYPE.get(), DeviceScreens.ControlScreen::new);
     event.register(FilterMenu.TYPE.get(), DeviceScreens.FilterScreen::new);
     event.register(GuideItem.TYPE.get(), GuideScreen::new);

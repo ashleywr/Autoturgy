@@ -253,7 +253,7 @@ public final class LogisticsReviewGameTests {
     h.succeed();
   }
 
-  @GameTest(template = "empty", timeoutTicks = 20)
+  @GameTest(template = "empty", timeoutTicks = 40)
   public static void catalogueQueriesBeyond256TypesAndRevisionsRefuseStaleActions(
       GameTestHelper h) {
     var core = structure(h);
@@ -275,9 +275,25 @@ public final class LogisticsReviewGameTests {
     h.assertTrue(
         !menu.intent(player, menu.revision(), 0, "diamond", 0, false),
         "same-tick query flood refused");
+    long initialTime = h.getLevel().getGameTime();
+    int throughRealRefresh = 21 - (int) (initialTime % 20);
     h.runAfterDelay(
-        3,
+        Math.max(3, throughRealRefresh),
         () -> {
+          System.out.println(
+              "CATALOGUE_FIXTURE initialTime="
+                  + initialTime
+                  + " queryTime="
+                  + h.getLevel().getGameTime()
+                  + " initialEntries=300 afterRealRefresh="
+                  + core.index.entries().size());
+          h.assertValueEqual(
+              core.index.entries().size(),
+              0,
+              "real periodic scan replaces synthetic catalogue with actual empty storage");
+          // This test supplies catalogue display data, not physical storage. Reinstall it after
+          // proving the normal refresh, so the query assertion is independent of server tick phase.
+          core.index = new InventoryIndex.Snapshot(List.of(), entries, 0, 0);
           h.assertTrue(
               menu.intent(player, menu.revision(), 0, "diamond", 0, false),
               "query accepted after bounded cadence");

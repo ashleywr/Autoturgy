@@ -1,0 +1,50 @@
+{
+  "category": "autoturgy:automation",
+  "name": "research.autoturgy.ender_disjunction.title",
+  "parents": [
+    "autoturgy:collecting_pearls"
+  ],
+  "column": 9,
+  "row": 0,
+  "icons": [
+    "autoturgy:ender_disjunction_ring"
+  ],
+  "stages": [
+    {
+      "text": "research.autoturgy.ender_disjunction.study",
+      "obtain": [
+        {
+          "items": [
+            "minecraft:paper"
+          ],
+          "amount": 1
+        }
+      ],
+      "required_knowledge": [
+        {
+          "type": "observation",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "text": "research.autoturgy.ender_disjunction.complete",
+      "recipes": [
+        "autoturgy:lesser_ender_disjunction_ring",
+        "autoturgy:ender_disjunction_ring"
+      ]
+    }
+  ],
+  "note_aspects": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 4
+    }
+  ],
+  "complexity": 2
+}

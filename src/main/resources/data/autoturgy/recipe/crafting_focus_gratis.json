@@ -1,0 +1,40 @@
+{
+  "type": "autoturgy:focus_upgrade",
+  "catalyst": {
+    "item": "autoturgy:crafting_focus"
+  },
+  "components": [
+    {
+      "item": "autoturgy:ordo_crystalline_brain"
+    },
+    {
+      "item": "autoturgy:conflux_disc"
+    },
+    {
+      "item": "minecraft:amethyst_shard"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:fabrico",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 24
+    },
+    {
+      "aspect": "thaumaturge:alienis",
+      "amount": 16
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:portable_crafting"
+  },
+  "catalyst_patch": {
+    "minecraft:custom_data": {
+      "Gratis": true
+    }
+  }
+}

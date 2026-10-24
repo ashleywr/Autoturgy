@@ -1,0 +1,39 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "minecraft:crafting_table"
+  },
+  "components": [
+    {
+      "item": "autoturgy:ordo_crystalline_brain"
+    },
+    {
+      "item": "autoturgy:conflux_disc"
+    },
+    {
+      "item": "thaumaturge:ingot_thaumium"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:fabrico",
+      "amount": 24
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 16
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:portable_crafting"
+  },
+  "result": {
+    "id": "autoturgy:crafting_focus",
+    "count": 1
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "autoturgy:avarice_pearl"
+  },
+  "components": [
+    {
+      "item": "autoturgy:ordo_crystalline_brain"
+    },
+    {
+      "item": "minecraft:gold_ingot"
+    },
+    {
+      "item": "autoturgy:conflux_disc"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 32
+    },
+    {
+      "aspect": "thaumaturge:desiderium",
+      "amount": 16
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:collecting_pearls"
+  },
+  "result": {
+    "id": "autoturgy:miser_pearl",
+    "count": 1
+  }
+}

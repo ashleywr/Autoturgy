@@ -1,0 +1,32 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "minecraft:iron_ingot"
+  },
+  "components": [
+    {
+      "item": "autoturgy:shattered_avarice"
+    },
+    {
+      "item": "autoturgy:perditio_crystalline_brain"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:perditio",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:alienis",
+      "amount": 16
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:ender_disjunction"
+  },
+  "result": {
+    "id": "autoturgy:lesser_ender_disjunction_ring",
+    "count": 1
+  }
+}

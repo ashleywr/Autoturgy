@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AA",
+    "AA"
+  ],
+  "key": {
+    "A": {
+      "item": "autoturgy:glow_amber"
+    }
+  },
+  "result": {
+    "id": "autoturgy:glow_amber_bricks",
+    "count": 4
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "autoturgy:item/lesser_ender_disjunction_ring"
+  }
+}

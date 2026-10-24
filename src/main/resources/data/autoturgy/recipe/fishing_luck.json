@@ -1,0 +1,48 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "type": "neoforge:components",
+    "items": "minecraft:fishing_rod",
+    "components": {
+      "minecraft:enchantments": {
+        "levels": {}
+      }
+    }
+  },
+  "components": [
+    {
+      "item": "minecraft:nautilus_shell"
+    },
+    {
+      "item": "autoturgy:aqua_sliver"
+    },
+    {
+      "item": "minecraft:lapis_lazuli"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:aqua",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:bestia",
+      "amount": 8
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 8
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:auxiliary_magic"
+  },
+  "catalyst_patch": {
+    "minecraft:enchantments": {
+      "levels": {
+        "minecraft:luck_of_the_sea": 3
+      }
+    }
+  }
+}

@@ -21,12 +21,13 @@ Autoturgy is an original unofficial recreation; no original code or assets are r
 - Fueled alchemical boiler, real host alembics, validated essentia locus and aggregator.
 - Golem linking bell, reversible inhibitor, physical-delivery taskmaster and golem workbench.
 - Paid Thaumostatic Spires, weighted Netherminds, dimensional creature lures and Siren navigation.
+- Finite experience stones and movable concentrate jars, real throwing pearls, Curios rings, portable wand crafting and preserved advanced node jarring.
+- Luminous amber masonry, sliver paving alternatives and deterministic fishing infusions.
 - Original textures, models, host research/magical recipes and searchable field notes.
 
 All listed devices perform their described function. Real host golems walk,
 collect actual indexed items, carry them in host hands and deliver through
-validated reservations. Experience and portable equipment remain
-subsequent phases; this preview does not claim complete feature parity.
+validated reservations. Experience and portable equipment now have survival functionality and automated coverage; final release-client and full-pack acceptance remain separate. This preview does not claim complete feature parity.
 
 ## Using the workshop
 
@@ -433,3 +434,89 @@ stores a copied ItemStack, violating NeoForge IDE-only component validation; the
 test source set narrowly admits that host class. No production suppression or
 host modification is included. Actual release-client harness, rendered
 structures, research/menus and final pack acceptance remain pending.
+
+
+## Experience and portable tools
+
+Amnesiac Stones hold 2,000 XP points. Click to remove one level, or sneak-click
+for five. Fractional progress scales to the destination level using an integer
+floor; all removed points enter the stone, and limited room takes only what fits.
+Standing on the solid stone drains ten points every four ticks. The real brain jar
+above collects from its buffer; otherwise the buffer releases collectible orbs.
+Sneak-use the brain itself with an empty hand to empty it. Used or thrown experience
+bottles yield exactly nine points once, exceeding the ordinary average of seven.
+
+Soul Stones hold 10,000 points and exchange with neighboring Amnesiac/brain
+assemblies according to their actual balances. Their own comparator reads their
+own fullness; an Amnesiac comparator reads connected stones and brains once each,
+with a bounded 512-position traversal. Soul Stones drip ten points per second into
+an empty unlabeled warded jar one or two below. An open Item Grate passes the drip,
+a closed grate or solid block stops it, and open air without a jar loses one point
+per second. Concentrate jars retain their sole balance when broken and placed.
+Phials withdraw/refill/drink exactly 100 points; ordinary bottles spend 20 points
+to produce a normal Bottle o' Enchanting that cannot refill concentrate. Stone
+breaks and explosions release half their buffer once and destroy the remainder.
+
+XP transfers reconstruct actual level/progress instead of trusting the lifetime
+counter. Exact addon balances survive float rounding and reload, and explicitly
+synchronize the client HUD. Player reconstruction supports levels through
+200,000,000, below Minecraft's native integer XP-width overflow; invalid external
+levels/progress are refused without rewriting them. Explicit point reconstruction
+saturates at that documented support bound. Pure long arithmetic has a wider
+1,400,000,000-level bound. These large bounds do not change ordinary survival play.
+
+Avarice/Miser Pearls are thrown entities with a 2.5-block collection radius and
+80-tick maximum flight. Collected loose stacks move directly into the thrower's
+real inventory; overflow stays loose. Avarice has a 64-stack operation bound;
+its shatter chance is min(1536,quantity+16*stacks)/2048 and damage chance is
+min(768,quantity+8*stacks)/1024, with bounded 1–8 damage. A surviving pearl returns
+once; a shattered one returns one fragment. Miser never harms/shatters, accepts
+at most ten loose stacks, and each manual throw pays 25 actual Ordo centivis from
+a carried wand. A dispenser is a calibrated launch with no manual vis cost and
+returns collected items and its one pearl to its own inventory, dropping safe
+remainders. Fragments gently attract existing idle, unnavigating Endermen within
+24 blocks as the approved modern affinity adaptation. Mercatus Amalgam's actual
+Desiderium value gives Pech a value of 24: one gift can domesticate a wild Pech,
+and subsequent gifts enter its real hoard.
+
+Equip Lesser/full Ender Disjunction Rings in real Curios ring slots. They deal
+3/6 damage within 6/12 blocks of either endpoint of an ender-creature teleport.
+A second ring adds half its own strength; later rings add nothing. One wearer
+pays 25 Perditio centivis per affected target/event, with no free unpaid effect.
+The normal Runic Shielding augmentation accepts both rings.
+
+Socket a Crafting Focus into a real wand. Right-use in air, or press the
+configurable Call Crafting Focus key, period (.) by default, from the hotbar.
+Opening costs 25 Ordo centivis. The portable menu uses actual ordinary and arcane
+recipes, real inputs/remainders and host research/payment rules. Primal icons
+show wand costs, counts show required crystals, and the Aura label shows the
+ordinary generic recipe cost paid from the player's loaded current chunk.
+Failed transactions roll back that real aura. Each arcane craft additionally
+costs 25 Ordo centivis; a staff can craft ordinary recipes only. Leftovers return
+on close, invalid wand changes, death and full inventories without duplication.
+
+Paid cumulative infusion upgrades provide Gratis, then Storage, then Transposing
+as an explicit modern replacement for unavailable legacy focus upgrade hooks.
+Gratis removes addon opening/operation fees. Storage also retains real grid and
+crystal inputs inside the physical focus. Transposing includes both and swaps
+whole focus stacks from inventory or a carried/worn real Focus Pouch, returning
+the previous focus to its source slot. Upgrades preserve contents and refuse
+redundant/lower tiers. Installed host transactions, sockets, pouches and data
+components remain authoritative; no host modification is included.
+
+Advanced Node Jarring consumes the normal shell with warded glass and a 3×3
+warded silverwood-log lid. Use an unfocused wand on an accessible warded lid log,
+with Advanced Node Jarring research and 70 vis of every primal. Instant capture
+preserves type, modifier and current/base/original aspects through actual host
+jar drop, placement and release. Energized capture is explicitly refused before
+payment because ordinary host jar semantics do not preserve that state safely.
+Only intrinsic node data travels; spatial relay and unrelated ownership state
+never travels with it.
+
+Glow Amber and its bricks emit light 15. Existing paid sliver refining remains
+unchanged; Practical Magic adds paid sliver paving alternatives. Fishing infusions
+apply Luck of the Sea III or Lure III to an unenchanted rod while preserving its
+name, wear and other components. Enchanted rods are explicitly refused rather
+than having their enchantments replaced. Existing milk/mushroom/vishroom fluid
+and food functionality remains available. All numerical costs/rates above are
+modern defaults where the historical public descriptions omit constants.

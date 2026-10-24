@@ -1,0 +1,33 @@
+{
+  "type": "thaumaturge:arcane_workbench_shaped",
+  "pattern": [
+    "SSS",
+    "ACA",
+    "SSS"
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stone"
+    },
+    "A": {
+      "item": "autoturgy:ordo_sliver"
+    },
+    "C": {
+      "item": "thaumaturge:ingot_thaumium"
+    }
+  },
+  "crystals": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 1
+    }
+  ],
+  "vis": 5,
+  "research": {
+    "entry": "autoturgy:auxiliary_magic"
+  },
+  "result": {
+    "id": "thaumaturge:paving_stone_barrier",
+    "count": 4
+  }
+}

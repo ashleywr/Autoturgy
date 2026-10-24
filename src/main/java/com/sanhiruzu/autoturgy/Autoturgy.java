@@ -27,6 +27,8 @@ public final class Autoturgy {
     com.sanhiruzu.autoturgy.constructs.NethermindModule.register(bus);
     com.sanhiruzu.autoturgy.constructs.SirensLure.register(bus);
     com.sanhiruzu.autoturgy.progression.ProgressionModule.register(bus);
+    com.sanhiruzu.autoturgy.experience.ExperienceModule.register(bus);
+    com.sanhiruzu.autoturgy.equipment.EquipmentModule.register(bus);
     ControlMenu.register();
     Content.register(bus);
   }

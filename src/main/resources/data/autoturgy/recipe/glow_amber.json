@@ -1,0 +1,32 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "thaumaturge:amber_block"
+  },
+  "components": [
+    {
+      "item": "minecraft:glowstone_dust"
+    },
+    {
+      "item": "autoturgy:ignis_sliver"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:lux",
+      "amount": 8
+    },
+    {
+      "aspect": "thaumaturge:vitreus",
+      "amount": 4
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:auxiliary_magic"
+  },
+  "result": {
+    "id": "autoturgy:glow_amber",
+    "count": 1
+  }
+}

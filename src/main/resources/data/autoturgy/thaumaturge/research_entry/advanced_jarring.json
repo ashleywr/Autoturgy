@@ -1,0 +1,47 @@
+{
+  "category": "autoturgy:automation",
+  "name": "research.autoturgy.advanced_jarring.title",
+  "parents": [
+    "autoturgy:essentia"
+  ],
+  "column": 8,
+  "row": 2,
+  "icons": [
+    "thaumaturge:jar_node"
+  ],
+  "stages": [
+    {
+      "text": "research.autoturgy.advanced_jarring.study",
+      "obtain": [
+        {
+          "items": [
+            "minecraft:paper"
+          ],
+          "amount": 1
+        }
+      ],
+      "required_knowledge": [
+        {
+          "type": "observation",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "text": "research.autoturgy.advanced_jarring.complete",
+      "recipes": []
+    }
+  ],
+  "note_aspects": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 4
+    }
+  ],
+  "complexity": 2
+}

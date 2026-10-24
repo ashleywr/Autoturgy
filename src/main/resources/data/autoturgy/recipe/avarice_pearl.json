@@ -1,0 +1,35 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "minecraft:ender_pearl"
+  },
+  "components": [
+    {
+      "item": "autoturgy:mercatus_amalgam"
+    },
+    {
+      "item": "autoturgy:aer_sliver"
+    },
+    {
+      "item": "autoturgy:perditio_sliver"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:desiderium",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:alienis",
+      "amount": 8
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:collecting_pearls"
+  },
+  "result": {
+    "id": "autoturgy:avarice_pearl",
+    "count": 1
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "autoturgy:lesser_ender_disjunction_ring"
+  },
+  "components": [
+    {
+      "item": "minecraft:ender_pearl"
+    },
+    {
+      "item": "thaumaturge:ingot_thaumium"
+    },
+    {
+      "item": "autoturgy:perditio_crystalline_brain"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:perditio",
+      "amount": 32
+    },
+    {
+      "aspect": "thaumaturge:alienis",
+      "amount": 24
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:ender_disjunction"
+  },
+  "result": {
+    "id": "autoturgy:ender_disjunction_ring",
+    "count": 1
+  }
+}

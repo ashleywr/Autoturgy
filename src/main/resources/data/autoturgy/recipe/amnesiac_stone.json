@@ -1,0 +1,35 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "minecraft:stone"
+  },
+  "components": [
+    {
+      "item": "autoturgy:perditio_crystalline_brain"
+    },
+    {
+      "item": "thaumaturge:ingot_thaumium"
+    },
+    {
+      "item": "minecraft:lapis_lazuli"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 8
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:experience"
+  },
+  "result": {
+    "id": "autoturgy:amnesiac_stone",
+    "count": 1
+  }
+}

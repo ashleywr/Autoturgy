@@ -1,0 +1,50 @@
+{
+  "category": "autoturgy:automation",
+  "name": "research.autoturgy.experience.title",
+  "parents": [
+    "autoturgy:golem_links"
+  ],
+  "column": 7,
+  "row": 0,
+  "icons": [
+    "autoturgy:amnesiac_stone"
+  ],
+  "stages": [
+    {
+      "text": "research.autoturgy.experience.study",
+      "obtain": [
+        {
+          "items": [
+            "minecraft:paper"
+          ],
+          "amount": 1
+        }
+      ],
+      "required_knowledge": [
+        {
+          "type": "observation",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "text": "research.autoturgy.experience.complete",
+      "recipes": [
+        "autoturgy:amnesiac_stone",
+        "autoturgy:soul_stone"
+      ]
+    }
+  ],
+  "note_aspects": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 4
+    }
+  ],
+  "complexity": 2
+}

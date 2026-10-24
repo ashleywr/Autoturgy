@@ -1,0 +1,39 @@
+{
+  "type": "thaumaturge:infusion",
+  "catalyst": {
+    "item": "minecraft:soul_sand"
+  },
+  "components": [
+    {
+      "item": "autoturgy:amnesiac_stone"
+    },
+    {
+      "item": "autoturgy:ordo_crystalline_brain"
+    },
+    {
+      "item": "minecraft:amethyst_shard"
+    }
+  ],
+  "aspects": [
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 24
+    },
+    {
+      "aspect": "thaumaturge:spiritus",
+      "amount": 16
+    },
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 16
+    }
+  ],
+  "instability": 2,
+  "research": {
+    "entry": "autoturgy:experience"
+  },
+  "result": {
+    "id": "autoturgy:soul_stone",
+    "count": 1
+  }
+}

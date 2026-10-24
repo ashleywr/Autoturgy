@@ -13,6 +13,16 @@
         "aspect": "thaumaturge:herba",
         "amount": 3
       }
+    ],
+    "autoturgy:mercatus_amalgam": [
+      {
+        "aspect": "thaumaturge:desiderium",
+        "amount": 48
+      },
+      {
+        "aspect": "thaumaturge:metallum",
+        "amount": 4
+      }
     ]
   }
 }

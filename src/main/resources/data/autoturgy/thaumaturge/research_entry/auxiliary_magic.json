@@ -1,0 +1,53 @@
+{
+  "category": "autoturgy:automation",
+  "name": "research.autoturgy.auxiliary_magic.title",
+  "parents": [
+    "autoturgy:foundations"
+  ],
+  "column": 9,
+  "row": 2,
+  "icons": [
+    "autoturgy:glow_amber"
+  ],
+  "stages": [
+    {
+      "text": "research.autoturgy.auxiliary_magic.study",
+      "obtain": [
+        {
+          "items": [
+            "minecraft:paper"
+          ],
+          "amount": 1
+        }
+      ],
+      "required_knowledge": [
+        {
+          "type": "observation",
+          "category": "thaumaturge:artifice",
+          "amount": 1
+        }
+      ]
+    },
+    {
+      "text": "research.autoturgy.auxiliary_magic.complete",
+      "recipes": [
+        "autoturgy:glow_amber",
+        "autoturgy:sliver_paving_travel",
+        "autoturgy:sliver_paving_barrier",
+        "autoturgy:fishing_luck",
+        "autoturgy:fishing_lure"
+      ]
+    }
+  ],
+  "note_aspects": [
+    {
+      "aspect": "thaumaturge:ordo",
+      "amount": 4
+    },
+    {
+      "aspect": "thaumaturge:cognitio",
+      "amount": 4
+    }
+  ],
+  "complexity": 2
+}
